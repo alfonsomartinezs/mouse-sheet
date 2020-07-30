@@ -1,0 +1,9 @@
+<h1>It matters not what you fight but what you fight for.</h1>
+<section class="characters-section container">
+<% @characters.each do |character|%>
+  <div class="character">
+    <%= character.name%>
+  </div>
+<% end %>
+</section>
+<%= link_to "Create a Guard", new_character_path%>

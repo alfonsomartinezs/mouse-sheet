@@ -1,0 +1,25 @@
+<%= form_for @character do |f|%>
+  <%= f.label :name%>
+  <%= f.text_field :name%>
+  <%= f.label :age %>
+  <%= f.number_field :age%>
+  <%= f.label :home%>
+  <%= select_tag(:home, options_for_select([['Lisbon',1],['England',2],['Madrid',3]]))%>
+  <%= f.label :fur_color%>
+  <%= f.text_field :fur_color%>
+  <%= f.label :rank%>
+  <%= select_tag(:rank, options_for_select([['n00b',1],['beginner',2],['veteran',3]]))%>
+  <%= f.label :cloak_color%>
+  <%= f.text_field :cloak_color%>
+  <%= f.label :parents%>
+  <%= f.text_field :parents%>
+  <%= f.label :senior_artisan%>
+  <%= f.text_field :senior_artisan%>
+  <%= f.label :mentor%>
+  <%= f.text_field :mentor%>
+  <%= f.label :friend%>
+  <%= f.text_field :friend%>
+  <%= f.label :enemy%>
+  <%= f.text_field :enemy%>
+  <%= f.submit "Join the Guard"%>
+<% end %>
