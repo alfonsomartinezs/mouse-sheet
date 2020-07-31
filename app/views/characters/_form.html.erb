@@ -3,12 +3,25 @@
   <%= f.text_field :name%>
   <%= f.label :age %>
   <%= f.number_field :age%>
-  <%= f.label :home%>
-  <%= select_tag(:home, options_for_select([['Lisbon',1],['England',2],['Madrid',3]]))%>
+  <% 
+    cities = []
+    City.find_each do |city|
+      c = [city.name,city.id]
+      cities << c
+    end 
+
+    ranks = []
+    Rank.find_each do |rank|
+    r = [rank.name,rank.id]
+    ranks << r
+    end
+  %>
+  <%= f.label :city, "Home"%>
+  <%= select_tag(:city, options_for_select(cities))%>
   <%= f.label :fur_color%>
   <%= f.text_field :fur_color%>
   <%= f.label :rank%>
-  <%= select_tag(:rank, options_for_select([['n00b',1],['beginner',2],['veteran',3]]))%>
+  <%= select_tag(:rank, options_for_select(ranks))%>
   <%= f.label :cloak_color%>
   <%= f.text_field :cloak_color%>
   <%= f.label :parents%>
@@ -21,5 +34,5 @@
   <%= f.text_field :friend%>
   <%= f.label :enemy%>
   <%= f.text_field :enemy%>
-  <%= f.submit "Join the Guard"%>
+  <%= f.submit "Join the Guard", :class => 'button-primary' %>
 <% end %>

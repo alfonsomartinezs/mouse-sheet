@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_152416) do
+ActiveRecord::Schema.define(version: 2020_07_31_203527) do
 
   create_table "characters", force: :cascade do |t|
     t.integer "user_id"
@@ -27,7 +27,31 @@ ActiveRecord::Schema.define(version: 2020_07_30_152416) do
     t.string "enemy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "city_id"
+    t.integer "rank_id"
+    t.string "belief"
+    t.string "goal"
+    t.string "instinct"
+    t.integer "nature"
+    t.integer "will"
+    t.integer "health"
+    t.integer "resources"
+    t.integer "circles"
+    t.index ["city_id"], name: "index_characters_on_city_id"
+    t.index ["rank_id"], name: "index_characters_on_rank_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ranks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +64,14 @@ ActiveRecord::Schema.define(version: 2020_07_30_152416) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wises", force: :cascade do |t|
+    t.integer "character_id"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_wises_on_character_id"
   end
 
 end

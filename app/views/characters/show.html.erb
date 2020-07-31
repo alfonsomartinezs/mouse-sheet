@@ -1,0 +1,19 @@
+<div class="container">
+<h1><%= @character.name %></h1>
+<%= link_to "edit", edit_character_path(@character)%>
+<%= link_to "back", characters_path()%>
+<p>Age: <%= @character.age %></p>
+<p>Home: <%= @character.city.name %></p>
+<p>For Color: <%= @character.fur_color %></p>
+<p>Guard Rank: <%= @character.rank.name %></p>
+<p>Cloak Color: <%= @character.cloak_color %></p>
+<p>Parents: <%= @character.parents %></p>
+<p>Senior Artisan: <%= @character.senior_artisan %></p>
+<p>Mentor: <%= @character.mentor %></p>
+<p>Friend: <%= @character.friend %></p>
+<p>Enemy: <%= @character.enemy %></p>
+
+
+<%= link_to "Delete Mouse", character_path(@character), method: :delete%>
+
+</div>
