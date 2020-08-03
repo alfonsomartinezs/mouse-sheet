@@ -1,0 +1,10 @@
+<%= form_with model: @item do |f|%>
+  <%= label_tag(:name)%>
+  <%= f.text_field :name%>
+  <%= label_tag(:description)%>
+  <%= f.text_area :description%>
+  <%= f.hidden_field :character_id, :value => @character.id  %>
+  <br/>
+  <%= submit_tag 'Submit',  class:"button button-primary" %>
+<% end %>
+<%= link_to "back", character_path(@character), class: "button" %>

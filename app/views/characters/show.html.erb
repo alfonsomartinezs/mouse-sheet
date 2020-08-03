@@ -2,6 +2,7 @@
 <h1><%= @character.name %></h1>
 <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>
 <%= link_to "back", characters_path(), class: "button"%>
+<%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
 <p>Age: <%= @character.age %></p>
 <p>Home: <%= @character.city.name %></p>
 <p>For Color: <%= @character.fur_color %></p>
@@ -20,7 +21,10 @@
 <p>Health: <%= @character.health %></p>
 <p>Resources: <%= @character.resources %></p>
 <p>Circles: <%= @character.circles %></p>
-
-<%= link_to "Delete Mouse", character_path(@character), method: :delete, class: "button"%>
+<h4>Items:</h4>
+<%= link_to "New Item", new_item_path(character: @character)%>
+<% @character.items.each do |item|%>
+<p class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span></p>
+<% end %>
 
 </div>

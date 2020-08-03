@@ -1,0 +1,15 @@
+// Place all the styles related to the Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+
+
+.hover-link{
+  margin-left: .5em;
+  display: none;
+}
+
+.item:hover .hover-link{
+  display: inline;
+}
