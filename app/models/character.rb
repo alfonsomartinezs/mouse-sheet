@@ -6,6 +6,7 @@ class Character < ApplicationRecord
   has_many :wises, through: :wisdoms
   has_many :advancements
   has_many :skills, through: :advancements
+  has_many :traits, through: :trait_advancements
   has_many :items
   has_many :contacts
 end

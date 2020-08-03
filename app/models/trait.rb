@@ -1,3 +1,4 @@
 class Trait < ApplicationRecord
-  belongs_to :character
+  has_many :trait_advancements
+  has_many :characters, through: :trait_advancements
 end

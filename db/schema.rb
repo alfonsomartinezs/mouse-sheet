@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_232128) do
+ActiveRecord::Schema.define(version: 2020_08_03_195711) do
 
   create_table "advancements", force: :cascade do |t|
     t.integer "skill_id", null: false
@@ -61,6 +61,24 @@ ActiveRecord::Schema.define(version: 2020_07_31_232128) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_contacts_on_character_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "character_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_items_on_character_id"
+  end
+
   create_table "ranks", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -68,6 +86,22 @@ ActiveRecord::Schema.define(version: 2020_07_31_232128) do
   end
 
   create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "trait_advancements", force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "mousetrait_id", null: false
+    t.integer "level"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_trait_advancements_on_character_id"
+    t.index ["mousetrait_id"], name: "index_trait_advancements_on_mousetrait_id"
+  end
+
+  create_table "traits", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -102,6 +136,10 @@ ActiveRecord::Schema.define(version: 2020_07_31_232128) do
 
   add_foreign_key "advancements", "characters"
   add_foreign_key "advancements", "skills"
+  add_foreign_key "contacts", "characters"
+  add_foreign_key "items", "characters"
+  add_foreign_key "trait_advancements", "characters"
+  add_foreign_key "trait_advancements", "mousetraits"
   add_foreign_key "wisdoms", "characters"
   add_foreign_key "wisdoms", "wises"
 end
