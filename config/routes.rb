@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :skills
   resources :advancements
   resources :items
+  resources :wisdoms
 end

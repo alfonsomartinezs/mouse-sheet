@@ -34,5 +34,13 @@
   <p class="skill-passes">Fails: <%= advancement.fails%></p>
   <p class="skill-passes">Level: <%= advancement.level%></p>
 <% end %>
+<h4>Wises:</h4>
+<%= link_to "New Wise", new_wisdom_path(character: @character)%>
+<% @character.wisdoms.each do |wisdom|%>
+  <p class='wise'><%= wisdom.wise.name %><span><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%></span></p>
+<% end %>
+
+
+
 
 </div>

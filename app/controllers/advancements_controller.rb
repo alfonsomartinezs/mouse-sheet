@@ -1,7 +1,6 @@
 class AdvancementsController < ApplicationController
   def new 
     @character = Character.find(params[:character])
-    puts @character.name
     @params = params
     @advancement = Advancement.new
     @skills = Skill.all
