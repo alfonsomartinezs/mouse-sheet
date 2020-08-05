@@ -1,0 +1,15 @@
+<div class="container center-text">
+<%= "debug: " + @params.to_s %>
+<%= link_to "back", character_path(@character), class: "button"%>
+<%= form_with model: @advancement do |form|%>
+  <%= label_tag :name, "Skill Name"%>
+  <%= form.text_field :name, :list => 'skills'%>
+  <datalist id= 'skills'>
+  <% @skills.each do |skill|%>
+  <option><%= skill.name%></option>
+  <% end %>
+  </datalist>
+  <%= form.hidden_field :character_id, :value => @character.id  %>
+  <%= form.submit "submit", class: "button button-primary"%>
+<% end %>
+</div>

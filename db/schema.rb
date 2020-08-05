@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_03_195711) do
+ActiveRecord::Schema.define(version: 2020_08_05_011842) do
 
   create_table "advancements", force: :cascade do |t|
     t.integer "skill_id", null: false
     t.integer "character_id", null: false
     t.string "name"
-    t.integer "passes"
-    t.integer "fails"
-    t.integer "level"
+    t.integer "passes", default: 0
+    t.integer "fails", default: 0
+    t.integer "level", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_advancements_on_character_id"

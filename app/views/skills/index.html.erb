@@ -1,6 +1,11 @@
+<ul>
 <% @skills.each do |skill| %>
-<%= skill.name %> 
-<% skill.characters.each do |c|%>
-<%= puts c.name%>
+  <li><%= skill.name %> 
+  <ul>
+  <% skill.characters.each do |character|%>
+    <li><%= character.name%></li>
+  <% end %>
+  </ul>
+  </li>
 <% end %>
-<% end %>
+</ul>
