@@ -8,7 +8,6 @@ class AdvancementsController < ApplicationController
   end
 
   def create 
-    puts "creating"
     @character = Character.find(params[:advancement][:character_id])
     skill_name = params[:advancement][:name]
     @skill = Skill.find_or_create_by(name: skill_name)
@@ -16,13 +15,20 @@ class AdvancementsController < ApplicationController
     @advancement = @character.advancements.new
     @advancement.character = @character
     @advancement.skill = @skill 
-    puts "saving advancement.."
     puts @advancement.character.name
     @advancement.save!
-    puts "saved"
+    flash.notice = "#{@skill.name} skill added." 
     puts @advancement.attributes
     redirect_to character_path(@character)
 
+  end
+
+  def destroy 
+    @advancement = Advancement.find(params[:id])
+    @advancement.destroy 
+    flash.notice = "#{@advancement.skill.name} skill removed."
+
+    redirect_to character_path(@advancement.character)
   end
 
 end

@@ -29,7 +29,7 @@
 <h4>Skills:</h4>
 <%= link_to "New Skill", new_advancement_path(character: @character)%>
 <% @character.advancements.each do |advancement|%>
-  <p class='skill'><%= advancement.skill.name %><span><%= link_to "delete" ,skill_path(advancement.skill,:character_id => advancement.character.id),method: :delete,class: "hover-link"%></span></p>
+  <p class='skill'><%= advancement.skill.name %><span><%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%></span></p>
   <p class="skill-passes">Passes: <%= advancement.passes%></p>
   <p class="skill-passes">Fails: <%= advancement.fails%></p>
   <p class="skill-passes">Level: <%= advancement.level%></p>

@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
       @item = @character.items.new
       @item.name = params[:item][:name]
       @item.description = params[:item][:description]
+      flash.notice = "#{@item.name} item created." 
       @item.save!
 
       redirect_to character_path(@character)
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @character = @item.character
     @item.destroy
+    flash.notice = "#{@item.name} item deleted." 
     redirect_to character_path(@character)
   end
 end

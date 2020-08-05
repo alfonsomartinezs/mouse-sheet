@@ -19,6 +19,7 @@ class CharactersController < ApplicationController
     @character.rank = Rank.find(params[:rank])
     puts params[:rank]
     @character.save!
+    flash.notice = "Character '#{@character.name}' Created!" 
 
     redirect_to characters_path
   end
@@ -26,7 +27,7 @@ class CharactersController < ApplicationController
   def destroy
     @character = Character.find(params[:id])
     @character.destroy
-
+    flash.notice = "Character '#{@character.name}' Deleted." 
     redirect_to characters_path
   end
 
@@ -38,6 +39,7 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
     @character.update(character_params)
 
+    flash.notice = "Character '#{@character.name}' Updated." 
     redirect_to character_path(@character)
   end
 
