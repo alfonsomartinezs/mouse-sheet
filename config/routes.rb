@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :advancements
   resources :items
   resources :wisdoms
+  resources :trait_advancements
 end

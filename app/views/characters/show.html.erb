@@ -39,6 +39,11 @@
 <% @character.wisdoms.each do |wisdom|%>
   <p class='wise'><%= wisdom.wise.name %><span><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%></span></p>
 <% end %>
+<h4>Traits:</h4>
+<%= link_to "New Trait", new_trait_advancement_path(character: @character)%>
+<% @character.trait_advancements.each do |advancement|%>
+  <p class='trait'><%= advancement.trait.name %> <%= advancement.level%><span><%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%></span></p>
+<% end %>
 
 
 

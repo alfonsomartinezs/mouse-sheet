@@ -1,0 +1,20 @@
+<div class="container center-text">
+  <h1>Add a Trait</h1>
+  <%= link_to "back", character_path(@character), class:"button"%>
+  <%= form_with model:@trait_advancement do |form|%>
+    <%= label_tag :name, "Trait Name"%>
+    <%= form.text_field :name, :list=> 'traits'%>
+    <datalist id = 'traits'>
+      <% @traits.each do |trait|%>
+        <option><%= trait.name%> </option>
+      <% end %>
+    </datalist>
+    <%= label_tag :level, "Starting Trait Level"%>
+    <%= form.number_field :level%>
+    
+    <%= form.hidden_field :character_id, :value => @character.id %>
+    <%= form.submit "submit", class:"button button-primary"%>
+  <% end %>
+</div>
+
+

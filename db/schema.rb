@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_011842) do
+ActiveRecord::Schema.define(version: 2020_08_06_192142) do
 
   create_table "advancements", force: :cascade do |t|
     t.integer "skill_id", null: false
@@ -93,12 +93,11 @@ ActiveRecord::Schema.define(version: 2020_08_05_011842) do
 
   create_table "trait_advancements", force: :cascade do |t|
     t.integer "character_id", null: false
-    t.integer "mousetrait_id", null: false
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "trait_id"
     t.index ["character_id"], name: "index_trait_advancements_on_character_id"
-    t.index ["mousetrait_id"], name: "index_trait_advancements_on_mousetrait_id"
   end
 
   create_table "traits", force: :cascade do |t|
@@ -139,7 +138,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_011842) do
   add_foreign_key "contacts", "characters"
   add_foreign_key "items", "characters"
   add_foreign_key "trait_advancements", "characters"
-  add_foreign_key "trait_advancements", "mousetraits"
   add_foreign_key "wisdoms", "characters"
   add_foreign_key "wisdoms", "wises"
 end
