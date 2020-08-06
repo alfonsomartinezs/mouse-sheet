@@ -3,18 +3,20 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .notice{
-  position: fixed;
+  // position: fixed;
   right: 5px;
   top: 5px;
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px grey;
   padding: .6em 1.3em;
   color: #419972;
+  background: white;
   font-weight: bold;
+  transition: all 1s;
 }
 
 .alert{
-  position: fixed;
+  // position: fixed;
   right: 5px;
   top: 5px;
   border: 1px solid #ddd;
@@ -22,4 +24,28 @@
   padding: .6em 1.3em;
   color: #FB1F20 ;
   font-weight: bold;
+}
+
+
+.hover-link{
+  margin-left: .5em;
+  display: none;
+}
+
+.item:hover .hover-link{
+  display: inline;
+}
+.skill:hover .hover-link{
+  display: inline;
+}
+.wise:hover .hover-link{
+  display: inline;
+}
+
+.center-text{
+  text-align: center;
+}
+
+.hidden{
+  opacity: 0;
 }
