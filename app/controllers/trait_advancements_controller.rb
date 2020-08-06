@@ -27,4 +27,26 @@ class TraitAdvancementsController < ApplicationController
     redirect_to character_path(@trait_advancement.character)
   end
 
+  def increment 
+    @trait_advancement = TraitAdvancement.find(params[:trait_advancement_id])
+    @trait_advancement.level += 1 
+    @trait_advancement.save 
+
+    flash.notice = "'#{@trait_advancement.trait.name}' trait increased."
+    redirect_to character_path(@trait_advancement.character)
+  end
+
+  def decrement
+    @trait_advancement = TraitAdvancement.find(params[:trait_advancement_id])
+    @trait_advancement.level -= 1
+    flash.notice = "'#{@trait_advancement.trait.name}' trait decreased."
+    if @trait_advancement.level < 0 
+      @trait_advancement.level = 0 
+      flash.notice = "'#{@trait_advancement.trait.name}' trait already at 0."
+    end 
+    @trait_advancement.save 
+
+    redirect_to character_path(@trait_advancement.character)
+  end
+
 end

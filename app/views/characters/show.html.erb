@@ -5,7 +5,7 @@
 <%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
 <p>Age: <%= @character.age %></p>
 <p>Home: <%= @character.city.name %></p>
-<p>For Color: <%= @character.fur_color %></p>
+<p>Fur Color: <%= @character.fur_color %></p>
 <p>Guard Rank: <%= @character.rank.name %></p>
 <p>Cloak Color: <%= @character.cloak_color %></p>
 <p>Parents: <%= @character.parents %></p>
@@ -29,10 +29,12 @@
 <h4>Skills:</h4>
 <%= link_to "New Skill", new_advancement_path(character: @character)%>
 <% @character.advancements.each do |advancement|%>
-  <p class='skill'><%= advancement.skill.name %><span><%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%></span></p>
-  <p class="skill-passes">Passes: <%= advancement.passes%></p>
-  <p class="skill-passes">Fails: <%= advancement.fails%></p>
-  <p class="skill-passes">Level: <%= advancement.level%></p>
+  <div class='skill'>
+    <span><%= advancement.skill.name %> <%= advancement.level%></span>
+    <%= link_to "#{advancement.passes} passes", advancement_pass_path(advancement),method: :put, class: "button"%>
+    <%= link_to "#{advancement.fails} fails", "#", class: "button"%>
+    <%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%>
+  </div>
 <% end %>
 <h4>Wises:</h4>
 <%= link_to "New Wise", new_wisdom_path(character: @character)%>
@@ -42,7 +44,13 @@
 <h4>Traits:</h4>
 <%= link_to "New Trait", new_trait_advancement_path(character: @character)%>
 <% @character.trait_advancements.each do |advancement|%>
-  <p class='trait'><%= advancement.trait.name %> <%= advancement.level%><span><%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%></span></p>
+  <div class='trait'>
+    <span><%= advancement.trait.name %> <%= advancement.level%></span>
+    <%= link_to " + ", trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
+    <%= link_to " - ", trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
+    <%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
+  </div>
+  
 <% end %>
 
 

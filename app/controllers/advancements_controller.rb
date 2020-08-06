@@ -19,7 +19,23 @@ class AdvancementsController < ApplicationController
     flash.notice = "#{@skill.name} skill added." 
     puts @advancement.attributes
     redirect_to character_path(@character)
+  end
 
+  def pass 
+    @advancement = Advancement.find(params[:advancement_id])
+    @advancement.passes += 1 
+    advance_skill
+    @advancement.save 
+    redirect_to character_path(@advancement.character)
+  end
+
+  def fail 
+    @advancement = Advancement.find(params[:advancement_id])
+    puts @advancement.attributes
+    @advancement.fails += 1 
+    advance_skill
+    @advancement.save 
+    redirect_to character_path(@advancement.character)
   end
 
   def destroy 
@@ -28,6 +44,20 @@ class AdvancementsController < ApplicationController
     flash.notice = "#{@advancement.skill.name} skill removed."
 
     redirect_to character_path(@advancement.character)
+  end
+
+
+
+  def advance_skill
+    nature = @advancement.character.nature
+    tries = @advancement.fails + @advancement.passes 
+    if tries >= nature 
+      @advancement.passes = 0 
+      @advancement.fails  = 0
+      @advancement.level += 1
+      @advancement.save 
+      flash.notice = "#{@advancement.skill.name} levelled up!"
+    end 
   end
 
 end

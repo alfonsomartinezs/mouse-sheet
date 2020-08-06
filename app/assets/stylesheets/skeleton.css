@@ -163,6 +163,13 @@ input[type="button"].button-primary:focus {
   background-color: 	rgb(255,165,0);
   border-color: rgb(218,165,32); }
 
+.button-increment{
+  padding: 0 .8em;
+  color: var(--primary);
+  margin-right: .5em;
+  border: none;
+  font-weight: bold;
+}
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
