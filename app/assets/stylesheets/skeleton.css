@@ -35,7 +35,7 @@
 .container {
   position: relative;
   width: 100%;
-  max-width: 1150px;
+  max-width: 1050px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box; }
@@ -113,7 +113,7 @@ input[type="reset"],
 input[type="button"] {
   display: inline-block;
   height: 38px;
-  padding: 0 30px;
+  padding: 0 1.4em;
   color: #555;
   text-align: center;
   font-size: 11px;
@@ -164,10 +164,10 @@ input[type="button"].button-primary:focus {
   border-color: rgb(218,165,32); }
 
 .button-increment{
-  padding: 0 .8em;
-  color: var(--primary);
+  padding: 0 1em;
+  /* color: var(--primary); */
   margin-right: .5em;
-  border: none;
+  border-color: var(--primary);
   font-weight: bold;
 }
 

@@ -1,3 +1,5 @@
+<div class="container">
+<h1> Add a Skill</h1>
 <%= form_with model: @item do |f|%>
   <%= label_tag(:name)%>
   <%= f.text_field :name%>
@@ -8,3 +10,4 @@
   <%= submit_tag 'Submit',  class:"button button-primary" %>
 <% end %>
 <%= link_to "back", character_path(@character), class: "button" %>
+</div>

@@ -1,57 +1,108 @@
-<div class="container">
+<div class="container grid character-sheet">
+
+<div class="header">
 <h1><%= @character.name %></h1>
 <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>
 <%= link_to "back", characters_path(), class: "button"%>
 <%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
-<p>Age: <%= @character.age %></p>
-<p>Home: <%= @character.city.name %></p>
-<p>Fur Color: <%= @character.fur_color %></p>
-<p>Guard Rank: <%= @character.rank.name %></p>
-<p>Cloak Color: <%= @character.cloak_color %></p>
-<p>Parents: <%= @character.parents %></p>
-<p>Senior Artisan: <%= @character.senior_artisan %></p>
-<p>Mentor: <%= @character.mentor %></p>
-<p>Friend: <%= @character.friend %></p>
-<p>Enemy: <%= @character.enemy %></p>
-<p>Belief: <%= @character.belief %></p>
-<p>Goal: <%= @character.goal %></p>
-<p>Instinct: <%= @character.instinct %></p>
-<p>Nature: <%= @character.nature %></p>
-<p>Will: <%= @character.will %></p>
-<p>Health: <%= @character.health %></p>
-<p>Resources: <%= @character.resources %></p>
-<p>Circles: <%= @character.circles %></p>
-<h4>Gear:</h4>
-<%= link_to "New Item", new_item_path(character: @character)%>
-<% @character.items.each do |item|%>
-  <p class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span></p>
+</div>
+
+<div class="aspects">
+<h4>Aspects</h4>
+<ul class="aspects-list">
+  <li><strong>Age:</strong> <%= @character.age %></li>
+  <li><strong>Home:</strong> <%= @character.city.name %></li>
+  <li><strong>Fur Color:</strong> <%= @character.fur_color %></li>
+  <li><strong>Guard Rank:</strong> <%= @character.rank.name %></li>
+  <li><strong>Cloak Color:</strong> <%= @character.cloak_color %></li>
+</ul>
+</div>
+
+<div class="relationships">
+<h4>Relationships</h4>
+<ul class="relationships-list">
+  <li><strong>Parents:</strong> <%= @character.parents %></li>
+  <li><strong>Senior Artisan:</strong> <%= @character.senior_artisan %></li>
+  <li><strong>Mentor:</strong> <%= @character.mentor %></li>
+  <li><strong>Friend:</strong> <%= @character.friend %></li>
+  <li><strong>Enemy: </strong><%= @character.enemy %></li>
+</ul>
+</div>
+
+<div class="worldview">
+<h4>Worldview</h4>
+<ul class="worldview-list">
+<li><strong>Belief:</strong> <%= @character.belief %></li>
+<li><strong>Goal: </strong><%= @character.goal %></li>
+<li><strong>Instinct:</strong> <%= @character.instinct %></li>
+</ul>
+</div>
+
+<div class="gear">
+<h4>Gear</h4>
+<ul class="gear-list">
+  <% @character.items.each do |item|%>
+    <li class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span></li>
+  <% end %>
+  <li><%= link_to "New Item", new_item_path(character: @character)%></li>
+</ul>
+</div>
+
+
+<div class="traits">
+<h4>Traits</h4>
+<ul class="traits-list">
+<% @character.trait_advancements.each do |advancement|%>
+  <li>
+  <div class='trait'>
+    <span><%= advancement.trait.name.titleize %> <%= advancement.level%></span>
+    <%= link_to "plus", trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
+    <%= link_to "minus", trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
+    <%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
+    </div>
+  </li>
 <% end %>
-<h4>Skills:</h4>
-<%= link_to "New Skill", new_advancement_path(character: @character)%>
+  <li><%= link_to "New Trait", new_trait_advancement_path(character: @character)%></li>
+</ul>
+</div>
+
+<div class="attributes">
+<h4>Attributes</h4>
+<ul class="attributes-list">
+<li>Nature: <%= @character.nature %></li>
+<li>Will: <%= @character.will %></li>
+<li>Health: <%= @character.health %></li>
+<li>Resources: <%= @character.resources %></li>
+<li>Circles: <%= @character.circles %></li>
+</ul>
+</div>
+
+<div class="skills">
+<h4>Skills</h4>
+<ul class= "skills-list">
 <% @character.advancements.each do |advancement|%>
+  <li>
   <div class='skill'>
-    <span><%= advancement.skill.name %> <%= advancement.level%></span>
-    <%= link_to "#{advancement.passes} passes", advancement_pass_path(advancement),method: :put, class: "button"%>
-    <%= link_to "#{advancement.fails} fails", "#", class: "button"%>
+    <span><%= advancement.skill.name.titleize %> <%= advancement.level%></span>
+    <%= link_to "#{advancement.passes} passes", advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
+    <%= link_to "#{advancement.fails} fails", "#", class: "button button-increment"%>
     <%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%>
   </div>
+  </li>
 <% end %>
-<h4>Wises:</h4>
-<%= link_to "New Wise", new_wisdom_path(character: @character)%>
+<li><%= link_to "New Skill", new_advancement_path(character: @character)%></li>
+</ul>
+</div> 
+
+<div class="wises">
+<h4>Wises</h4>
+<ul class="wises-list">
 <% @character.wisdoms.each do |wisdom|%>
-  <p class='wise'><%= wisdom.wise.name %><span><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%></span></p>
+  <li class='wise'><%= wisdom.wise.name.titleize %><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%></li>
 <% end %>
-<h4>Traits:</h4>
-<%= link_to "New Trait", new_trait_advancement_path(character: @character)%>
-<% @character.trait_advancements.each do |advancement|%>
-  <div class='trait'>
-    <span><%= advancement.trait.name %> <%= advancement.level%></span>
-    <%= link_to " + ", trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
-    <%= link_to " - ", trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
-    <%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
-  </div>
-  
-<% end %>
+<li><%= link_to "New Wise", new_wisdom_path(character: @character)%></li>
+</ul>
+</div>
 
 
 

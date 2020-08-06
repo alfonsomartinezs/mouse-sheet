@@ -56,3 +56,36 @@
 .hidden{
   opacity: 0;
 }
+
+// .aspects-list,.relationships-list,.worldview-list,.gear-list,.traits-list,.skills-list,.wises-list,.attributes-list{
+//   border: solid 2px grey;
+// }
+.aspects,.relationships,.worldview,.gear,.traits,.skills,.wises,.attributes,.header{
+  border: solid 3px grey;
+  border-radius: 5px;
+  ul{
+    list-style: none;
+  }
+  padding: 1em;
+}
+div > h4{
+  text-align: center;
+}
+.grid{
+  display: grid;
+}
+
+.character-sheet{
+  gap: 2em;
+}
+
+.header{
+  text-align: center;
+  border: none;
+}
+
+@media only screen and (min-width: 600px){
+  .character-sheet{
+    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+  }
+}
