@@ -177,3 +177,17 @@ wise_names.each do |name|
  Wise.create(name: name)
 end
 
+
+##seed ranks
+Rank.destroy_all
+
+rank_names = [
+  "Tenderpaw",
+  "Guardmouse",
+  "Patrol Guard",
+  "Patrol Leader",
+  "Guard Captain"
+]
+rank_names.each do |name|
+  Rank.create(name: name)
+ end

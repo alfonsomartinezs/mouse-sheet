@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_192142) do
+ActiveRecord::Schema.define(version: 2020_08_05_011842) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "advancements", force: :cascade do |t|
-    t.integer "skill_id", null: false
-    t.integer "character_id", null: false
+    t.bigint "skill_id", null: false
+    t.bigint "character_id", null: false
     t.string "name"
     t.integer "passes", default: 0
     t.integer "fails", default: 0
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
   end
 
   create_table "characters", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "name"
     t.integer "age"
     t.string "home"
@@ -40,8 +43,8 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
     t.string "enemy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "city_id"
-    t.integer "rank_id"
+    t.bigint "city_id"
+    t.bigint "rank_id"
     t.string "belief"
     t.string "goal"
     t.string "instinct"
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer "character_id", null: false
+    t.bigint "character_id", null: false
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "character_id", null: false
+    t.bigint "character_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_items_on_character_id"
@@ -92,12 +95,13 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
   end
 
   create_table "trait_advancements", force: :cascade do |t|
-    t.integer "character_id", null: false
+    t.bigint "character_id", null: false
+    t.bigint "trait_id", null: false
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "trait_id"
     t.index ["character_id"], name: "index_trait_advancements_on_character_id"
+    t.index ["trait_id"], name: "index_trait_advancements_on_trait_id"
   end
 
   create_table "traits", force: :cascade do |t|
@@ -119,8 +123,8 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
   end
 
   create_table "wisdoms", force: :cascade do |t|
-    t.integer "wise_id", null: false
-    t.integer "character_id", null: false
+    t.bigint "wise_id", null: false
+    t.bigint "character_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_wisdoms_on_character_id"
@@ -138,6 +142,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_192142) do
   add_foreign_key "contacts", "characters"
   add_foreign_key "items", "characters"
   add_foreign_key "trait_advancements", "characters"
+  add_foreign_key "trait_advancements", "traits"
   add_foreign_key "wisdoms", "characters"
   add_foreign_key "wisdoms", "wises"
 end
