@@ -9,7 +9,7 @@
       <% end %>
     </datalist>
     <%= label_tag :level, "Starting Trait Level"%>
-    <%= form.number_field :level%>
+    <%= form.number_field :level, :value => 0 %>
     
     <%= form.hidden_field :character_id, :value => @character.id %>
     <br/>
