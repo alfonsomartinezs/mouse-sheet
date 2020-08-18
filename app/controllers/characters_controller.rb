@@ -17,6 +17,7 @@ class CharactersController < ApplicationController
     @character = current_user.characters.new(character_params)
     @character.city = City.find(params[:city])
     @character.rank = Rank.find(params[:rank])
+    puts @character.attributes
     @character.mentor_profession  = params[:mentor_profession]
     @character.parent_profession  = params[:parent_profession]
     @character.artisan_profession = params[:artisan_profession] 
@@ -40,6 +41,12 @@ class CharactersController < ApplicationController
   def update
     @character = Character.find(params[:id])
     @character.update(character_params)
+    @character.mentor_profession  = params[:mentor_profession]
+    @character.parent_profession  = params[:parent_profession]
+    @character.artisan_profession = params[:artisan_profession] 
+    @character.city = City.find(params[:city])
+    @character.rank = Rank.find(params[:rank])
+    @character.save
 
     flash.notice = "Character '#{@character.name}' Updated." 
     redirect_to character_path(@character)
