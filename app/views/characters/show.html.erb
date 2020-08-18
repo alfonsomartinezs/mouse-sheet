@@ -85,7 +85,7 @@
   <div class='skill'>
     <span><%= advancement.skill.name.titleize %> <%= advancement.level%></span>
     <%= link_to "#{advancement.passes} passes", advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
-    <%= link_to "#{advancement.fails} fails", advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
+    <%= link_to "#{advancement.fails} fails", advancement_fail_path(advancement),method: :put, class: "button button-increment"%>
     <%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%>
   </div>
   </li>
