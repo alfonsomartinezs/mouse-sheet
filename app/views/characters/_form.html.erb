@@ -15,6 +15,55 @@
     r = [rank.name,rank.id]
     ranks << r
     end
+
+    parent_professions = [
+      ["Apiarist","Apiarist"],
+      ["Archivist","Archivist"],
+      ["Armorer","Armorer"],
+      ["Baker","Baker"],
+      ["Boatcrafter","Boatcrafter"],
+      ["Brewer","Brewer"],
+      ["Carpenter","Carpenter"],
+      ["Cartographer","Cartographer"],
+      ["Glazier","Glazier"],
+      ["Harvester","Harvester"],
+      ["Insectrist","Insectrist"],
+      ["Miller","Miller"],
+      ["Potter","Potter"],
+      ["Smith","Smith"],
+      ["Stonemason","Stonemason"],
+      ["Weaver","Weaver"]     
+    ]
+
+    artisan_professions = [
+      ["Apiarist","Apiarist"],
+      ["Archivist","Archivist"],
+      ["Armorer","Armorer"],
+      ["Baker","Baker"],
+      ["Brewer","Brewer"],
+      ["Carpenter","Carpenter"],
+      ["Cartographer","Cartographer"],
+      ["Glazier","Glazier"],
+      ["Harvester","Harvester"],
+      ["Insectrist","Insectrist"],
+      ["Miller","Miller"],
+      ["Potter","Potter"],
+      ["Smith","Smith"],
+      ["Stonemason","Stonemason"],
+      ["Weaver","Weaver"] 
+    ]
+
+    mentor_professions = [
+      ["Fighter","Fighter"],
+      ["Healer","Healer"],
+      ["Hunter","Hunter"],
+      ["Instructor","Instructor"],
+      ["Pathfinder","Pathfinder"],
+      ["Scout","Scout"],
+      ["Survivalist","Survivalist"],
+      ["Weather Watcher","Weather Watcher"],
+    ]
+
   %>
   <%= f.label :city, "Home"%>
   <%= select_tag(:city, options_for_select(cities))%>
@@ -26,10 +75,16 @@
   <%= f.text_field :cloak_color%>
   <%= f.label :parents%>
   <%= f.text_field :parents%>
+  <%= f.label :parent_profession%>
+  <%= select_tag(:parent_profession, options_for_select(parent_professions)) %>
   <%= f.label :senior_artisan%>
   <%= f.text_field :senior_artisan%>
+  <%= f.label :artisan_profession%>
+  <%= select_tag(:artisan_profession, options_for_select(artisan_professions)) %>
   <%= f.label :mentor%>
   <%= f.text_field :mentor%>
+  <%= f.label :mentor_profession%>
+  <%= select_tag(:mentor_profession, options_for_select(mentor_professions)) %>
   <%= f.label :friend%>
   <%= f.text_field :friend%>
   <%= f.label :enemy%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_011842) do
+ActiveRecord::Schema.define(version: 2020_08_18_025821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 2020_08_05_011842) do
     t.integer "health"
     t.integer "resources"
     t.integer "circles"
+    t.string "parent_profession"
+    t.string "artisan_profession"
+    t.string "mentor_profession"
     t.index ["city_id"], name: "index_characters_on_city_id"
     t.index ["rank_id"], name: "index_characters_on_rank_id"
     t.index ["user_id"], name: "index_characters_on_user_id"

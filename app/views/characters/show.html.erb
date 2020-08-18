@@ -21,9 +21,9 @@
 <div class="relationships">
 <h4>Relationships</h4>
 <ul class="relationships-list">
-  <li><strong>Parents:</strong> <%= @character.parents %></li>
-  <li><strong>Senior Artisan:</strong> <%= @character.senior_artisan %></li>
-  <li><strong>Mentor:</strong> <%= @character.mentor %></li>
+  <li><strong>Parents:</strong> <%= @character.parents %>(<%= @character.parent_profession%>)</li>
+  <li><strong>Senior Artisan:</strong> <%= @character.senior_artisan %>(<%= @character.artisan_profession%>)</li>
+  <li><strong>Mentor:</strong> <%= @character.mentor %>(<%= @character.mentor_profession%>)</li>
   <li><strong>Friend:</strong> <%= @character.friend %></li>
   <li><strong>Enemy: </strong><%= @character.enemy %></li>
 </ul>

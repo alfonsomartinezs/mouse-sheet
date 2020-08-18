@@ -17,7 +17,9 @@ class CharactersController < ApplicationController
     @character = current_user.characters.new(character_params)
     @character.city = City.find(params[:city])
     @character.rank = Rank.find(params[:rank])
-    puts params[:rank]
+    @character.mentor_profession  = params[:mentor_profession]
+    @character.parent_profession  = params[:parent_profession]
+    @character.artisan_profession = params[:artisan_profession] 
     @character.save!
     flash.notice = "Character '#{@character.name}' Created!" 
 
