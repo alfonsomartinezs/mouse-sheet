@@ -2,6 +2,7 @@
 
 <div class="header">
 <h1><%= @character.name %></h1>
+<p><%= image_tag @character.image.url(:medium) %></p>
 <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>
 <%= link_to "back", characters_path(), class: "button"%>
 <%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
