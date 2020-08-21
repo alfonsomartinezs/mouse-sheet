@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_025821) do
+ActiveRecord::Schema.define(version: 2020_08_20_205531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,10 @@ ActiveRecord::Schema.define(version: 2020_08_18_025821) do
     t.string "parent_profession"
     t.string "artisan_profession"
     t.string "mentor_profession"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["city_id"], name: "index_characters_on_city_id"
     t.index ["rank_id"], name: "index_characters_on_rank_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
