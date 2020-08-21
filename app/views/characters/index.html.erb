@@ -8,6 +8,7 @@
 <% end %>
 <% @characters.each do |character|%>
   <div class="character">
+  <p><%= image_tag character.image.url(:thumb) %></p>
     <%= link_to character.name, character_path(character)%>
   </div>
 <% end %>
