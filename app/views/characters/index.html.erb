@@ -1,6 +1,11 @@
 
 <section class="characters-section container">
 <h1>It matters not what you fight but what you fight for.</h1>
+<% unless user_signed_in? %>
+  <p>
+    You can log in "test@mail.com" and "password" to view a sample account or sign up to create your own characters.
+  </p>
+<% end %>
 <% @characters.each do |character|%>
   <div class="character">
     <%= link_to character.name, character_path(character)%>

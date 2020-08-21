@@ -89,6 +89,10 @@ h1{
   border: none;
 }
 
+.character{
+  padding: 2em 0;
+}
+
 @media only screen and (min-width: 600px){
   .character-sheet{
     grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
