@@ -61,8 +61,8 @@
 //   border: solid 2px grey;
 // }
 .aspects,.relationships,.worldview,.gear,.traits,.skills,.wises,.attributes,.header{
-  border: solid 3px grey;
-  border-radius: 5px;
+  background-color: #f7f7f8;
+  box-shadow: 1px 1px 3px 1px rgba(181,184,190,1);
   ul{
     list-style: none;
   }
