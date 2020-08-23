@@ -111,13 +111,17 @@ h1{
   // padding: 1em;
   
 }
+
+
 .character a{
   display: grid;
-  grid-template-columns: min-content auto;
+  grid-template-columns: 100px auto;
   text-decoration: none;
   color: inherit;
   gap: 1em;
 }
+
+
 .character a:hover{
   color: inherit;
 }
@@ -125,6 +129,17 @@ h1{
 //   object-fit: cover;
 //   height: 100%;
 // }
+
+.character-thumb{
+  height: 100%;
+  justify-self: center;
+}
+
+.character-thumb img{
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
 
 .character-text{
   padding: 1em 0;
@@ -145,6 +160,6 @@ h1{
     grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
   }
   .characters{
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
   }
 }

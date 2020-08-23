@@ -9,32 +9,34 @@
   <h3>Your Characters</h3>
   <%= link_to "Create a Guard", new_character_path, class: "button button-primary"%>
 <% if @user %>
-
   <div class="characters">  
-  <% @user_characters.each do |character|%>
-    <div class="character">
-      <%= link_to character_path(character) do%>
-        <%= image_tag character.image.url(:thumb) %>
-    <div class="character-text">
-      <h3> <%= character.name %> </h3>
-      <% if character.belief.length > 0 %>
-      <p>
-      "<%= 
-        if character.belief.length > 37 
-          character.belief[0..35]+"..."
-        else
-          character.belief
-        end
-      %>"
-      </p>
-      <% end %>
-      </div>
-      <%end %>
-      
-    </div>
-  <% end %>
+    <% @user_characters.each do |character|%>
+        <div class="character">
+          <%= link_to character_path(character) do%>
+                <div class="character-thumb">
+                <%= image_tag character.image.url(:thumb) %>
+                </div>
+                <div class="character-text">
+                <h3> <%= character.name %> </h3>
+                <% if character.belief.length > 0 %>
+                <p>
+                "<%= 
+                  if character.belief.length > 37 
+                    character.belief[0..35]+"..."
+                  else
+                    character.belief
+                  end
+                %>"
+                </p>
+              <% end %>
+            </div>
+          <%end %>    
+        </div>
+    <% end %>
   </div>
 <% end %>
+
+
 <h3>Other Characters</h3>
 <div class="characters">
   <% @other_characters.each do |character|%>
