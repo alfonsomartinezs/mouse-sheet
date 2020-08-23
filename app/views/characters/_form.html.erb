@@ -4,6 +4,13 @@
   <%= f.text_field :name%>
   <%= f.label :age %>
   <%= f.number_field :age%>
+  <p>
+    <% if @character.image.exists? %>
+        <%= image_tag @character.image.url %><br/>
+    <% end %>
+    <%= f.label :image, "Attach a New Image" %><br />
+    <%= f.file_field :image %>
+  </p>
   <% 
     cities = []
     City.find_each do |city|
@@ -106,13 +113,6 @@
   <%= f.number_field :resources%>
   <%= f.label :circles%>
   <%= f.number_field :circles%>
-  <p>
-    <% if @character.image.exists? %>
-        <%= image_tag @character.image.url %><br/>
-    <% end %>
-    <%= f.label :image, "Attach a New Image" %><br />
-    <%= f.file_field :image %>
-  </p>
   <br/>
   <%= f.submit "Submit", :class => 'button-primary' %>
 <% end %>
