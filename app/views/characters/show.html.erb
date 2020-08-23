@@ -47,7 +47,7 @@
   <% @character.items.each do |item|%>
     <li class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><% if current_user and current_user.id == @character.user_id %><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span><%end%></li>
   <% end %>
-  <% if current_user.try(@id) == @character.user_id %>
+  <% if current_user and current_user.id == @character.user_id %>
   <li><%= link_to "New Item", new_item_path(character: @character)%></li>
   <% end %>
 </ul>
