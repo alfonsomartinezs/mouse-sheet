@@ -4,7 +4,7 @@
 <h1><%= @character.name %></h1>
 <p><%= image_tag @character.image.url(:medium) %></p>
 <%= link_to "back", characters_path(), class: "button"%>
-<% if @character.user_id == current_user.try(@id) %>
+<% if current_user and @character.user_id == current_user.id %>
   <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>
   <%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
 <% end %>
@@ -45,7 +45,7 @@
 <h4>Gear</h4>
 <ul class="gear-list">
   <% @character.items.each do |item|%>
-    <li class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><% if current_user.try(@id) == @character.user_id %><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span><%end%></li>
+    <li class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><% if current_user and current_user.id == @character.user_id %><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span><%end%></li>
   <% end %>
   <% if current_user.try(@id) == @character.user_id %>
   <li><%= link_to "New Item", new_item_path(character: @character)%></li>
@@ -61,7 +61,7 @@
   <li>
   <div class='trait'>
     <span><%= advancement.trait.name.titleize %> <%= advancement.level%></span>
-    <% if current_user.try(@id) == @character.user_id %>
+    <% if current_user and current_user.id == @character.user_id %>
     <%= link_to "plus", trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
     <%= link_to "minus", trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
     <%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
@@ -69,7 +69,7 @@
     </div>
   </li>
 <% end %>
-<% if current_user.try(@id) == @character.user_id %>
+<% if current_user and current_user.id == @character.user_id %>
   <li><%= link_to "New Trait", new_trait_advancement_path(character: @character)%></li>
 <% end %>
 </ul>
@@ -93,7 +93,7 @@
   <li>
   <div class='skill'>
     <span><%= advancement.skill.name.titleize %> <%= advancement.level%></span>
-    <% if current_user.try(@id) == @character.user_id %>
+    <% if current_user and current_user.id == @character.user_id %>
       <%= link_to "#{advancement.passes} passes", advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
       <%= link_to "#{advancement.fails} fails", advancement_fail_path(advancement),method: :put, class: "button button-increment"%>
       <%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%>
@@ -101,7 +101,7 @@
   </div>
   </li>
 <% end %>
-<% if current_user.try(@id) == @character.user_id %>
+<% if current_user and current_user.id == @character.user_id %>
   <li><%= link_to "New Skill", new_advancement_path(character: @character)%></li>
 <% end %>
 </ul>
@@ -111,9 +111,9 @@
 <h4>Wises</h4>
 <ul class="wises-list">
 <% @character.wisdoms.each do |wisdom|%>
-  <li class='wise'><%= wisdom.wise.name.titleize %><% if current_user.try(@id) == @character.user_id %><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%><%end%></li>
+  <li class='wise'><%= wisdom.wise.name.titleize %><% if current_user and current_user.id == @character.user_id %><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%><%end%></li>
 <% end %>
-<% if current_user.try(@id) == @character.user_id %>
+<% if current_user and current_user.id == @character.user_id %>
   <li><%= link_to "New Wise", new_wisdom_path(character: @character)%></li>
 <% end %>
 </ul>
