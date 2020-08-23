@@ -1,9 +1,13 @@
 class CharactersController < ApplicationController
   include CharactersHelper
-  before_action :authenticate_user!
   def index 
-    @user = current_user
-    @characters = @user.characters
+
+    if user_signed_in?
+      @user  = current_user
+      @user_characters = @user.characters
+    end
+    @other_characters = Character.where.not(user: @user)
+
   end
   def new
     @character = Character.new

@@ -6,11 +6,22 @@
     You can log in "test@mail.com" and "password" to view a sample account or sign up to create your own characters.
   </p>
 <% end %>
-<% @characters.each do |character|%>
+<% if @user %>
+  <h3>Your Characters</h3>
+  <% @user_characters.each do |character|%>
+    <div class="character">
+      <%= image_tag character.image.url(:thumb) %>
+      <%= link_to character.name, character_path(character)%>
+    </div>
+  <% end %>
+<% end %>
+<h3>Other Characters</h3>
+<% @other_characters.each do |character|%>
   <div class="character">
-  <p><%= image_tag character.image.url(:thumb) %></p>
+    <%= image_tag character.image.url(:thumb) %>
     <%= link_to character.name, character_path(character)%>
   </div>
 <% end %>
+
 <%= link_to "Create a Guard", new_character_path, class: "button button-primary"%>
 </section>
