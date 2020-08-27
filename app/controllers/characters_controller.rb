@@ -22,11 +22,39 @@ class CharactersController < ApplicationController
     @character = current_user.characters.new(character_params)
     @character.city = City.find(params[:city])
     @character.rank = Rank.find(params[:rank])
-    puts @character.attributes
     @character.mentor_profession  = params[:mentor_profession]
     @character.parent_profession  = params[:parent_profession]
     @character.artisan_profession = params[:artisan_profession] 
-    @character.save!
+    @character.save
+    
+    parent_skill    =  Skill.find_by(name: @character.parent_profession.downcase)
+    artisan_skill   =  Skill.find_by(name: @character.artisan_profession.downcase)
+    mentor_skill    = Skill.find_by(name: @character.mentor_profession.downcase)
+
+    starting_skills = {}
+    [parent_skill,artisan_skill,mentor_skill].each do |skill| 
+      puts "##################putting skill"
+      puts "###############skill name = #{skill.name}"
+      puts "########skill = #{skill}"
+      starting_skills[skill.name] = 0 if starting_skills[skill.name].nil?  
+      starting_skills[skill.name] += 1
+    end
+
+    puts "starting skills::"
+    puts starting_skills
+    starting_skills.each do |skill,rank|
+      puts skill 
+      puts rank 
+    end
+    starting_skills.each do |skill,rank|
+      advancement = @character.advancements.new 
+      advancement.skill = Skill.find_by(name: skill)
+      advancement.level = rank
+      advancement.save
+    end
+
+
+
     flash.notice = "Character '#{@character.name}' Created!" 
 
     redirect_to characters_path
