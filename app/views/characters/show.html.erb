@@ -2,7 +2,7 @@
 
 <div class="header">
 <h1><%= @character.name %></h1>
-<p><%= image_tag @character.image.url(:medium) %></p>
+<p><%= image_tag @character.character_image if @character.image.attached? %></p>
 <%= link_to "back", characters_path(), class: "button"%>
 <% if current_user and @character.user_id == current_user.id %>
   <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>

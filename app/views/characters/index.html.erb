@@ -14,7 +14,7 @@
         <div class="character">
           <%= link_to character_path(character) do%>
                 <div class="character-thumb">
-                <%= image_tag character.image.url(:thumb) %>
+                <%= image_tag character.thumbnail if character.image.attached? %>
                 </div>
                 <div class="character-text">
                 <h3> <%= character.name %> </h3>
@@ -42,7 +42,7 @@
   <% @other_characters.each do |character|%>
         <div class="character">
       <%= link_to character_path(character) do%>
-        <%= image_tag character.image.url(:thumb) %>
+        <%= image_tag(character.thumbnail) if character.image.attached? %>
     <div class="character-text">
       <h3> <%= character.name %> </h3>
       <% if character.belief.length > 0 %>

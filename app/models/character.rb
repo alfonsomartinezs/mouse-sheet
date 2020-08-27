@@ -12,6 +12,16 @@ class Character < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  has_attached_file :image, styles: {medium: "300x300>", thumb: "120x120>"}, dependent: destroy
-  validates :image, :content_type: [:jpg,:jpeg,:png]
+  has_one_attached :image
+  validates :image, content_type: [:jpg,:jpeg,:png]
+
+
+  def thumbnail
+    return self.image.variant(resize: '120x120')
+  end
+
+  def character_image 
+    return self.image.variant(resize: '300x300')
+  end
+
 end

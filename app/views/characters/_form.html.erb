@@ -5,8 +5,8 @@
   <%= f.label :age %>
   <%= f.number_field :age%>
   <p>
-    <% if @character.image.exists? %>
-        <%= image_tag @character.image.url %><br/>
+    <% if @character.image.attached? %>
+        <%= image_tag @character.character_image %><br/>
     <% end %>
     <%= f.label :image, "Attach a New Image" %><br />
     <%= f.file_field :image %>
