@@ -12,6 +12,6 @@ class Character < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  has_attached_file :image, styles: {medium: "300x300>", thumb: "120x120>"}
-  validates_attachment_content_type :image, :content_type => ["image/jpg","image/jpeg","image/png"]
+  has_attached_file :image, styles: {medium: "300x300>", thumb: "120x120>"}, dependent: destroy
+  validates :image, :content_type: [:jpg,:jpeg,:png]
 end
