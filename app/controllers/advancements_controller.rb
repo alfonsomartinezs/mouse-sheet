@@ -23,6 +23,7 @@ class AdvancementsController < ApplicationController
 
   def pass 
     @advancement = Advancement.find(params[:advancement_id])
+    puts "advancement id: #{@advancement.id}"
     @advancement.passes += 1 
     advance_skill
     @advancement.save 
