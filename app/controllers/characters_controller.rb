@@ -32,20 +32,12 @@ class CharactersController < ApplicationController
     mentor_skill    = Skill.find_by(name: @character.mentor_profession.downcase)
 
     starting_skills = {}
+
     [parent_skill,artisan_skill,mentor_skill].each do |skill| 
-      puts "##################putting skill"
-      puts "###############skill name = #{skill.name}"
-      puts "########skill = #{skill}"
       starting_skills[skill.name] = 0 if starting_skills[skill.name].nil?  
       starting_skills[skill.name] += 1
     end
 
-    puts "starting skills::"
-    puts starting_skills
-    starting_skills.each do |skill,rank|
-      puts skill 
-      puts rank 
-    end
     starting_skills.each do |skill,rank|
       advancement = @character.advancements.new 
       advancement.skill = Skill.find_by(name: skill)

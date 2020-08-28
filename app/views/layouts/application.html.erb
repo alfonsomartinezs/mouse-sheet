@@ -11,19 +11,26 @@
   </head>
 
   <body>
-    <%if flash.notice%>
-      <p class="notice"><%= flash.notice%></p>
-    <% end %>
-    <%if flash.alert%>
-      <p class="alert"><%= flash.alert%></p>
-    <% end %>
     
-    <% if user_signed_in? %>
-      <p><%= link_to('Logout', destroy_user_session_path, method: :delete) %>        </p>
-    <% else %>
-      <p><%= link_to('Login', new_user_session_path) %>  </p>
-    <% end %>
+    <header>
+      
+      <nav class='nav container grid'>
+      <%if flash.notice%>
+        <p class="notice"><%= flash.notice%></p>
+      <% end %>
+      <%if flash.alert%>
+        <p class="alert"><%= flash.alert%></p>
+      <% end %>
+
+
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+      <% else %>
+        <%= link_to('Login', new_user_session_path) %>
+      <% end %>
+      </nav>
     
+    </header>
     <%= yield %>
     <%= javascript_pack_tag 'custom' %>
   </body>

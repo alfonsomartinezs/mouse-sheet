@@ -45,7 +45,7 @@
 <h4>Gear</h4>
 <ul class="gear-list">
   <% @character.items.each do |item|%>
-    <li class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><% if current_user and current_user.id == @character.user_id %><span><%= link_to "delete" ,item_path(item),method: :delete,class: "hover-link"%></span><%end%></li>
+    <li class='item'><strong><%= item.name%></strong> <% unless item.description == '' %> <%= item.description%><% end%><% if current_user and current_user.id == @character.user_id %><span><%= link_to image_tag("icons/solid/trash.svg") ,item_path(item),method: :delete,class: "hover-link"%></span><%end%></li>
   <% end %>
   <% if current_user and current_user.id == @character.user_id %>
   <li><%= link_to "New Item", new_item_path(character: @character)%></li>
@@ -62,9 +62,9 @@
   <div class='trait'>
     <span><%= advancement.trait.name.titleize %> <%= advancement.level%></span>
     <% if current_user and current_user.id == @character.user_id %>
-    <%= link_to "plus", trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
-    <%= link_to "minus", trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
-    <%= link_to "delete" ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
+    <%= link_to image_tag("icons/solid/plus-sm.svg"), trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
+    <%= link_to image_tag("icons/solid/minus-sm.svg"), trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
+    <%= link_to image_tag("icons/solid/trash.svg") ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
     <% end %>
     </div>
   </li>
@@ -92,11 +92,11 @@
 <% @character.advancements.each do |advancement|%>
   <li>
   <div class='skill'>
-    <span><%= advancement.skill.name.titleize %> <%= advancement.level%></span>
+    <span><%= advancement.skill.name.titleize %> <%= advancement.level%> (<%= advancement.passes %> passes /<%= advancement.fails%> fails)</span>
     <% if current_user and current_user.id == @character.user_id %>
-      <%= link_to "#{advancement.passes} passes", advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
-      <%= link_to "#{advancement.fails} fails", advancement_fail_path(advancement),method: :put, class: "button button-increment"%>
-      <%= link_to "delete" ,advancement_path(advancement),method: :delete,class: "hover-link"%>
+      <%= link_to image_tag("icons/solid/check.svg"), advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
+      <%= link_to image_tag("icons/solid/x.svg"), advancement_fail_path(advancement),method: :put, class: "button button-increment"%>
+      <%= link_to image_tag("icons/solid/trash.svg") ,advancement_path(advancement),method: :delete,class: "hover-link"%>
     <% end %>
   </div>
   </li>
@@ -111,7 +111,7 @@
 <h4>Wises</h4>
 <ul class="wises-list">
 <% @character.wisdoms.each do |wisdom|%>
-  <li class='wise'><%= wisdom.wise.name.titleize %><% if current_user and current_user.id == @character.user_id %><%= link_to "delete" ,wisdom_path(wisdom),method: :delete,class: "hover-link"%><%end%></li>
+  <li class='wise'><%= wisdom.wise.name.titleize %><% if current_user and current_user.id == @character.user_id %><%= link_to image_tag("icons/solid/trash.svg") ,wisdom_path(wisdom),method: :delete,class: "hover-link"%><%end%></li>
 <% end %>
 <% if current_user and current_user.id == @character.user_id %>
   <li><%= link_to "New Wise", new_wisdom_path(character: @character)%></li>

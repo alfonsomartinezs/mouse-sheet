@@ -1,13 +1,13 @@
+<section class="hero-section">
+  <div class="container hero ">
+    <h1 class="hero-title">It matters not what you fight but what you fight for.</h1>
+    
+    <%= link_to "Create a Guard", new_character_path, class: "button button-primary"%>
+  </div>
+</section>
 
 <section class="characters-section container">
-<h1 class="hero-title">It matters not what you fight but what you fight for.</h1>
-<% unless user_signed_in? %>
-  <p>
-    You can log in "test@mail.com" and "password" to view a sample account or sign up to create your own characters.
-  </p>
-<% end %>
   <h3>Your Characters</h3>
-  <%= link_to "Create a Guard", new_character_path, class: "button button-primary"%>
 <% if @user %>
   <div class="characters">  
     <% @user_characters.each do |character|%>

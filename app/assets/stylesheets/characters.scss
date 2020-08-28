@@ -2,9 +2,61 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+
+header{
+  // background-color: var(--primary);
+  border-bottom: solid 1px lightgrey;
+  // border: solid pink 2px;
+  margin-bottom: 4rem;
+}
+header a{
+  // color: white;
+}
+nav{
+  position: relative;
+  align-items: end;
+  justify-content: right;
+  // min-height: 5rem;
+  padding: 1.5em 2rem;
+  // background-color: var(--primary);
+}
+header .nav{
+  padding: 1em 2em;
+}
+nav a{
+  // font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  // color: white;
+}
+
+
+.hero-section  .hero{
+  // background-color: black;
+  // background: url(asset_path("banner.jpeg"));
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // color: white;
+  position: relative;
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+
+.hero-section{
+  margin-bottom: 3em;
+}
+
+// .background-layer{
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(0,0,0,.2)
+// }
+
+
 .notice{
-  // position: fixed;
-  right: 5px;
+  position: fixed;
+  left: 5px;
   top: 5px;
   border: 1px solid #ddd;
   box-shadow: 1px 1px 3px grey;
@@ -26,6 +78,14 @@
   font-weight: bold;
 }
 
+
+.skill,.trait,.wise{
+  display: flex;
+  align-items: center;
+}
+.skill span, .trait span{
+  margin-right: .5em;
+}
 
 
 .hover-link{
@@ -62,13 +122,23 @@
 //   border: solid 2px grey;
 // }
 .aspects,.relationships,.worldview,.gear,.traits,.skills,.wises,.attributes,.header{
-  background-color: #f7f7f8;
-  box-shadow: 1px 1px 3px 1px rgba(181,184,190,1);
+  // background-color: #f7f7f8;
+  // box-shadow: 1px 1px 3px 1px rgba(181,184,190,1);
+  border-top: solid 1px lightgray;
+  border-bottom: solid 1px lightgray;
   ul{
     list-style: none;
   }
   padding: 1em;
 }
+
+.header{
+  background-color: inherit;
+  box-shadow: none;
+  grid-column: 1/-1;
+}
+
+
 div > h4{
   text-align: center;
   font-family: 'Cardo', serif;
@@ -106,9 +176,10 @@ h1{
   gap: 2em;
 }
 
+
 .character{
-  border-top: 2px solid lightgrey;
-  border-bottom: 2px solid lightgray;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgray;
   // padding: 1em;
   
 }
@@ -159,7 +230,7 @@ h1{
 
 @media only screen and (min-width: 600px){
   .character-sheet{
-    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
   }
   .characters{
     grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
