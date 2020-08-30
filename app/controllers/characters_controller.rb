@@ -25,8 +25,15 @@ class CharactersController < ApplicationController
     @character.mentor_profession  = params[:mentor_profession]
     @character.parent_profession  = params[:parent_profession]
     @character.artisan_profession = params[:artisan_profession] 
+    @character.health    = @character.rank.rank_health
+    @character.will      = @character.rank.rank_will
+    @character.circles   = @character.rank.rank_circles
+    @character.resources = @character.rank.rank_resources
     @character.save
+     
+
     
+
     parent_skill    =  Skill.find_by(name: @character.parent_profession.downcase)
     artisan_skill   =  Skill.find_by(name: @character.artisan_profession.downcase)
     mentor_skill    = Skill.find_by(name: @character.mentor_profession.downcase)
@@ -45,12 +52,11 @@ class CharactersController < ApplicationController
       advancement.save
     end
 
-
-
     flash.notice = "Character '#{@character.name}' Created!" 
 
     redirect_to characters_path
   end
+
 
   def destroy
     @character = Character.find(params[:id])
