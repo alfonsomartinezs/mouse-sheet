@@ -5,7 +5,7 @@
   <%= form.text_field :name, :list => 'wises'%>
   <datalist id= 'wises'>
   <% @wises.each do |wise|%>
-  <option><%= wise.name%></option>
+  <option><%= wise.name.capitalize%></option>
   <% end %>
   </datalist>
   <%= form.hidden_field :character_id, :value => @character.id  %>

@@ -235,4 +235,12 @@ h1{
   .characters{
     grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
   }
+
+  .nav{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .nav a{
+    margin-left: 2em;
+  }
 }

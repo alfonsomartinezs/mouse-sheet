@@ -174,7 +174,7 @@ wise_names = [
 ]
  
 wise_names.each do |name|
- Wise.create(name: name)
+ Wise.create(name: name.downcase)
 end
 
 

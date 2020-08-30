@@ -5,7 +5,7 @@
     <%= form.text_field :name, :list=> 'traits'%>
     <datalist id = 'traits'>
       <% @traits.each do |trait|%>
-        <option><%= trait.name%> </option>
+        <option><%= trait.name.capitalize%> </option>
       <% end %>
     </datalist>
     <%= label_tag :level, "Starting Trait Level"%>
