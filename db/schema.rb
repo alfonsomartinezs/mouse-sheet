@@ -114,6 +114,10 @@ ActiveRecord::Schema.define(version: 2020_08_27_024942) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "rank_will"
+    t.integer "rank_health"
+    t.integer "rank_circles"
+    t.integer "rank_resources"
   end
 
   create_table "skills", force: :cascade do |t|

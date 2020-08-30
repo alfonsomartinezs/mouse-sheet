@@ -181,13 +181,11 @@ end
 ##seed ranks
 Rank.destroy_all
 
-rank_names = [
-  "Tenderpaw",
-  "Guardmouse",
-  "Patrol Guard",
-  "Patrol Leader",
-  "Guard Captain"
+rank_attrs = [
+  {name: "Tenderpaw",rank_will: 2,rank_health: 6, rank_resources: 1, rank_circles: 1},
+  {name: "Guardmouse", rank_will: 3, rank_health: 5, rank_resources: 2, rank_circles: 2},
+  {name: "Patrol Guard",rank_will: 4, rank_health: 4,rank_resources: 3, rank_circles: 2},
+  {name: "Patrol Leader",rank_will: 5, rank_health: 4, rank_resources: 4, rank_circles: 3},
+  {name: "Guard Captain",rank_will: 6, rank_health: 3, rank_resources: 5, rank_circles: 4}
 ]
-rank_names.each do |name|
-  Rank.create(name: name)
- end
+Rank.create(rank_attrs)

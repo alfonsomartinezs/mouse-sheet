@@ -103,16 +103,18 @@
   <%= f.text_field :goal%>
   <%= f.label :instinct%>
   <%= f.text_field :instinct%>
-  <%= f.label :nature%>
-  <%= f.number_field :nature%>
-  <%= f.label :will%>
-  <%= f.number_field :will%>
-  <%= f.label :health%>
-  <%= f.number_field :health%>
-  <%= f.label :resources%>
-  <%= f.number_field :resources%>
-  <%= f.label :circles%>
-  <%= f.number_field :circles%>
+  <% unless @character.new_record? %>
+    <%= f.label :nature%>
+    <%= f.number_field :nature%>
+    <%= f.label :will%>
+    <%= f.number_field :will%>
+    <%= f.label :health%>
+    <%= f.number_field :health%>
+    <%= f.label :resources%>
+    <%= f.number_field :resources%>
+    <%= f.label :circles%>
+    <%= f.number_field :circles%>
+    <% end %>
   <br/>
   <%= f.submit "Submit", :class => 'button-primary' %>
 <% end %>
