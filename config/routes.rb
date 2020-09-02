@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "characters#index"
-  resources :characters
+  resources :characters do
+    put    :gain_fate
+    patch  :gain_fate
+    put    :gain_persona
+    patch  :gain_persona
+    put    :lose_fate
+    patch  :lose_fate
+    put    :lose_persona
+    patch  :lose_persona
+
+  end
   resources :skills
   resources :advancements do 
     patch  :pass 

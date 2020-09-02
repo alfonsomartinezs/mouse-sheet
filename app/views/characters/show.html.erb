@@ -8,6 +8,16 @@
   <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>
   <%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
 <% end %>
+<p>
+  <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_fate_path(@character), method: :put, class: "button button-increment" %>
+  <strong>Fate:</strong> <%= @character.fate%>
+  <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_fate_path(@character), method: :put, class: "button button-increment" %>
+</P>
+<p>
+  <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_persona_path(@character), method: :put, class: "button button-increment" %>
+  <strong>Persona:</strong> <%= @character.persona%>
+  <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_persona_path(@character), method: :put, class: "button button-increment" %>
+</P>
 </div>
 
 <div class="aspects">

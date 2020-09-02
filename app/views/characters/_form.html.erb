@@ -74,25 +74,25 @@
 
   %>
   <%= f.label :city, "Home"%>
-  <%= select_tag(:city, options_for_select(cities))%>
+  <%= select_tag(:city, options_for_select(cities,@character.city.id))%>
   <%= f.label :fur_color%>
   <%= f.text_field :fur_color%>
   <%= f.label :rank%>
-  <%= select_tag(:rank, options_for_select(ranks))%>
+  <%= select_tag(:rank, options_for_select(ranks,@character.rank.id))%>
   <%= f.label :cloak_color%>
   <%= f.text_field :cloak_color%>
   <%= f.label :parents%>
   <%= f.text_field :parents%>
   <%= f.label :parent_profession%>
-  <%= select_tag(:parent_profession, options_for_select(parent_professions)) %>
+  <%= select_tag(:parent_profession, options_for_select(parent_professions,@character.parent_profession)) %>
   <%= f.label :senior_artisan%>
   <%= f.text_field :senior_artisan%>
   <%= f.label :artisan_profession%>
-  <%= select_tag(:artisan_profession, options_for_select(artisan_professions)) %>
+  <%= select_tag(:artisan_profession, options_for_select(artisan_professions,@character.artisan_profession)) %>
   <%= f.label :mentor%>
   <%= f.text_field :mentor%>
   <%= f.label :mentor_profession%>
-  <%= select_tag(:mentor_profession, options_for_select(mentor_professions)) %>
+  <%= select_tag(:mentor_profession, options_for_select(mentor_professions,@character.mentor_profession)) %>
   <%= f.label :friend%>
   <%= f.text_field :friend%>
   <%= f.label :enemy%>

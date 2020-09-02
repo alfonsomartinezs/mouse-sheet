@@ -29,6 +29,7 @@ class CharactersController < ApplicationController
     @character.will      = @character.rank.rank_will
     @character.circles   = @character.rank.rank_circles
     @character.resources = @character.rank.rank_resources
+    @character.nature = 3
     @character.save
      
 
@@ -41,7 +42,7 @@ class CharactersController < ApplicationController
     starting_skills = {}
 
     [parent_skill,artisan_skill,mentor_skill].each do |skill| 
-      starting_skills[skill.name] = 0 if starting_skills[skill.name].nil?  
+      starting_skills[skill.name] = 2 if starting_skills[skill.name].nil?  
       starting_skills[skill.name] += 1
     end
 
@@ -69,6 +70,37 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
   end
 
+  def gain_fate
+    @character = Character.find(params[:character_id])
+    puts @character.name
+    @character.fate += 1
+    @character.save
+    redirect_to character_path(@character)
+  end
+
+  def lose_fate
+    @character = Character.find(params[:character_id])
+    @character.fate -= 1
+    @character.save
+    redirect_to character_path(@character)
+  end
+
+  def gain_persona
+    @character = Character.find(params[:character_id])
+    puts @character.name
+    @character.persona += 1
+    @character.save
+    redirect_to character_path(@character)
+  end
+
+  def lose_persona
+    @character = Character.find(params[:character_id])
+    @character.persona -= 1
+    @character.save
+    redirect_to character_path(@character)
+  end
+
+
   def update
     @character = Character.find(params[:id])
     @character.update(character_params)
@@ -82,5 +114,7 @@ class CharactersController < ApplicationController
     flash.notice = "Character '#{@character.name}' Updated." 
     redirect_to character_path(@character)
   end
+
+
 
 end

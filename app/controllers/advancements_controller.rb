@@ -52,13 +52,23 @@ class AdvancementsController < ApplicationController
   def advance_skill
     nature = @advancement.character.nature
     tries = @advancement.fails + @advancement.passes 
-    if tries >= nature 
+    
+    if @advancement.level == 0
+      if tries >= nature 
+        @advancement.passes = 0 
+        @advancement.fails  = 0
+        @advancement.level  = 2
+        @advancement.save 
+        flash.notice = "#{@advancement.skill.name} levelled up!"
+      end
+      elsif @advancement.passes >= @advancement.level && @advancement.fails >= @advancement.level-1 
       @advancement.passes = 0 
       @advancement.fails  = 0
       @advancement.level += 1
       @advancement.save 
       flash.notice = "#{@advancement.skill.name} levelled up!"
-    end 
+    end
+
   end
 
 end
