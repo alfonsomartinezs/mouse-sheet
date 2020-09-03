@@ -8,7 +8,7 @@ class AdvancementsController < ApplicationController
 
   def create 
     @character = Character.find(params[:advancement][:character_id])
-    skill_name = params[:advancement][:name]
+    skill_name = params[:advancement][:name].downcase
     @skill = Skill.find_or_create_by(name: skill_name)
 
     @advancement = @character.advancements.new

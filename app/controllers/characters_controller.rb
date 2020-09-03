@@ -15,7 +15,6 @@ class CharactersController < ApplicationController
 
   def show
     @character = Character.find(params[:id])
-    puts "Got into character show"
   end
 
   def create 

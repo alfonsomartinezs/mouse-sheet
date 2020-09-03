@@ -8,12 +8,10 @@ class WisdomsController < ApplicationController
   def create 
     #get character for wisdom
     @character = Character.find(params[:wisdom][:character_id])
-    puts "trying here>>"
     #get or create wise for wisdom
     wise_name = (params[:wisdom][:name]).downcase
     puts wise_name
     @wise = Wise.find_or_create_by(name: wise_name)
-    puts "creating wisdom>>"
     #create wisdom
     @wisdom = @character.wisdoms.new
     @wisdom.wise = @wise
