@@ -33,15 +33,34 @@ class CharactersController < ApplicationController
     @character.save
      
 
-    
+    starting_skills = {}    
+  
+    #skills from rank
 
+    rank_skills = {
+      "Tenderpaw"     =>["pathfinder","scout","laborer"],
+      "Guardmouse"   =>["fighter","haggler","scout","pathfinder","survivalist"],
+      "Patrol Guard"  =>["cook","fighter","hunter","scout","healer","pathfinder","survivalist","weather watcher"],
+      "Patrol Leader" =>["fighter","hunter","instructor","loremouse","persuader","pathfinder","scout","survivalist","weather watcher"],
+      "Guard Captain" =>["administrator","fighter","healer","hunter","instructor","militarist","orator","pathfinder","scout","survivalist","weather watcher"]
+    }
+    
+    rank_skills[@character.rank.name].each do |skill| 
+      puts "learning #{skill}"
+      starting_skills[skill] = 2 if starting_skills[skill].nil?  
+      starting_skills[skill] += 1
+    end
+
+
+    #skills from relations
     parent_skill    =  Skill.find_by(name: @character.parent_profession.downcase)
     artisan_skill   =  Skill.find_by(name: @character.artisan_profession.downcase)
     mentor_skill    = Skill.find_by(name: @character.mentor_profession.downcase)
 
-    starting_skills = {}
+
 
     [parent_skill,artisan_skill,mentor_skill].each do |skill| 
+      puts "learning #{skill.name}"
       starting_skills[skill.name] = 2 if starting_skills[skill.name].nil?  
       starting_skills[skill.name] += 1
     end
@@ -114,6 +133,8 @@ class CharactersController < ApplicationController
     flash.notice = "Character '#{@character.name}' Updated." 
     redirect_to character_path(@character)
   end
+
+
 
 
 

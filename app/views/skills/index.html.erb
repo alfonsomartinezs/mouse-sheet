@@ -1,6 +1,6 @@
 <ul>
 <% @skills.each do |skill| %>
-  <li><%= skill.name %> 
+  <li><%= skill.name %>(<%= skill.id %>) 
   <ul>
   <% skill.characters.each do |character|%>
     <li><%= character.name%></li>
