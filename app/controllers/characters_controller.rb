@@ -38,7 +38,7 @@ class CharactersController < ApplicationController
 
     rank_skills = {
       "Tenderpaw"     =>["pathfinder","scout","laborer"],
-      "Guardmouse"   =>["fighter","haggler","scout","pathfinder","survivalist"],
+      "Guardmouse"    =>["fighter","haggler","scout","pathfinder","survivalist"],
       "Patrol Guard"  =>["cook","fighter","hunter","scout","healer","pathfinder","survivalist","weather watcher"],
       "Patrol Leader" =>["fighter","hunter","instructor","loremouse","persuader","pathfinder","scout","survivalist","weather watcher"],
       "Guard Captain" =>["administrator","fighter","healer","hunter","instructor","militarist","orator","pathfinder","scout","survivalist","weather watcher"]
