@@ -2,17 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
 header{
-  // background-color: var(--primary);
-  border-bottom: solid 1px lightgrey;
-  // border: solid pink 2px;
-  margin-bottom: 4rem;
+  // border: 1px solid black;
+  height: 10vh;
+  display: grid;
+  align-items: center;
+  display: grid;
+  justify-items: center;
 }
-header a{
-  // color: white;
-}
+
 nav{
+  // border: 1px solid pink;
   position: relative;
   align-items: end;
   justify-content: right;
@@ -20,6 +20,15 @@ nav{
   padding: 1.5em 2rem;
   // background-color: var(--primary);
 }
+
+.nav{
+  display: flex;
+  justify-content: flex-end;
+}
+.nav a{
+  margin-left: 2em;
+}
+
 header .nav{
   padding: 1em 2em;
 }
@@ -31,7 +40,7 @@ nav a{
 }
 
 
-.hero-section  .hero{
+.hero{
   // background-color: black;
   // background: url(asset_path("banner.jpeg"));
   // background-position: center;
@@ -39,12 +48,33 @@ nav a{
   // background-size: cover;
   // color: white;
   position: relative;
-  padding-top: 3em;
-  padding-bottom: 2em;
+  // border: 2px solid orange;
+  // display: grid;
+  height: 60vh;
+  // max-width: 80%;
+  padding-bottom: 7em;
+  padding-right: 2em;
+  padding-left: 2em;
+  margin-bottom: 5em;
 }
 
-.hero-section{
-  margin-bottom: 3em;
+// .hero-text{
+//   max-width: 30ch;
+//   line-height: 1.4;
+//   font-size: 25px;
+//   color: var(--primary);
+// }
+
+.hero-image{
+  display: block;
+  max-width: 50%;
+  max-height: auto;
+  margin: 2em auto;
+}
+
+.hero-title{
+  color: var(--primary);
+  margin: .5em auto;
 }
 
 // .background-layer{
@@ -53,6 +83,11 @@ nav a{
 //   background-color: rgba(0,0,0,.2)
 // }
 
+.hero-cta.button.button-primary{
+  display: block;
+  margin:0 auto;
+  max-width: 30ch;
+}
 
 .notice{
   position: fixed;
@@ -148,12 +183,7 @@ h1{
   font-family: 'Cardo', serif;
 }
 
-.hero-title{
-  max-width: 30ch;
-  line-height: 1.4;
-  margin: 1em 0;
-  
-}
+
 
 .grid{
   display: grid;
@@ -165,7 +195,7 @@ h1{
 
 .header{
   text-align: center;
-  border: none;
+
 }
 
 
@@ -236,11 +266,51 @@ h1{
     grid-template-columns: repeat(auto-fit,minmax(270px,1fr));
   }
 
-  .nav{
-    display: flex;
-    justify-content: flex-end;
+
+  .hero{
+    display: grid;
+    grid-template-columns: 1fr 1fr auto 1fr 1fr;
+    grid-template-rows: 35% 1fr auto 1fr 1fr;
   }
-  .nav a{
-    margin-left: 2em;
+  .hero-image{
+    grid-row: 1/-1;
+    grid-column: 1/span 2;
+    align-self: center;
+  }
+  .hero-title{
+    color: var(--primary);
+    grid-row: 3;
+    grid-column: 3/span 3;
+  }
+  .hero-text{
+    grid-row: 4;
+    grid-column: 3/span 3;
+  }
+  .hero-cta{
+    grid-row: 5;
+    grid-column: 3/span 1;
+  }
+}
+@media only screen and (min-width: 1200px){
+  .hero{
+    grid-template-columns: 1fr 1fr max-content 1fr 1fr 1fr;
+  }
+  .hero-image{
+    grid-row: 1/-1;
+    grid-column: 1/span 3;
+    align-self: center;
+  }
+  .hero-title{
+    color: var(--primary);
+    grid-row: 3;
+    grid-column: 3/span 3;
+  }
+  .hero-text{
+    grid-row: 4;
+    grid-column: 3/span 3;
+  }
+  .hero-cta{
+    grid-row: 5;
+    grid-column: 3/span 1;
   }
 }

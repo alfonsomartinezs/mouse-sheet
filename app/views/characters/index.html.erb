@@ -1,10 +1,15 @@
-<section class="hero-section">
-  <div class="container hero ">
+
+<section class="hero ">
+    <%= image_tag "mouse-guard-transparent.png", :class => "hero-image"%>
     <h1 class="hero-title">It matters not what you fight but what you fight for.</h1>
-    
-    <%= link_to "Create a Guard", new_character_path, class: "button button-primary"%>
-  </div>
+    <p class="hero-text">
+      Lorem ipsum dolor sit amet. Ut blandit placerat molestie. Donec id egestas tellus. Aliquam tincidunt mauris ac libero tincidunt auctor. Vivamus blandit venenatis consequat. Sed ut justo nec neque consectetur lobortis sit amet sit amet dui.
+    </p>
+      <%= link_to "Create a Guard", new_character_path, class: "button button-primary hero-cta"%>
+    </div>
+
 </section>
+
 
 <section class="characters-section container">
   <h3>Your Characters</h3>
