@@ -60,15 +60,13 @@
 <h4>Traits</h4>
 <ul class="traits-list">
 <% @character.trait_advancements.each do |advancement|%>
-  <li>
-  <div class='trait'>
+  <li class="trait tooltip" data-tooltip= "<%= advancement.trait.description %>">
     <span><%= advancement.trait.name.titleize %> <%= advancement.level%></span>
     <% if current_user and current_user.id == @character.user_id %>
-    <%= link_to image_tag("icons/solid/plus-sm.svg"), trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
-    <%= link_to image_tag("icons/solid/minus-sm.svg"), trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
-    <%= link_to image_tag("icons/solid/trash.svg") ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
+      <%= link_to image_tag("icons/solid/plus-sm.svg"), trait_advancement_increment_path(advancement), method: :put, class: "button button-increment" %>
+      <%= link_to image_tag("icons/solid/minus-sm.svg"), trait_advancement_decrement_path(advancement), method: :put, class: "button button-increment" %>
+      <%= link_to image_tag("icons/solid/trash.svg") ,trait_advancement_path(advancement),method: :delete,class: "hover-link"%>
     <% end %>
-    </div>
   </li>
 <% end %>
 <% if current_user and current_user.id == @character.user_id %>
