@@ -127,6 +127,7 @@ GEM
     minitest (5.14.1)
     msgpack (1.3.3)
     msgpack (1.3.3-x64-mingw32)
+    newrelic_rpm (6.12.0.367)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -245,6 +246,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   mini_magick
+  newrelic_rpm
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)

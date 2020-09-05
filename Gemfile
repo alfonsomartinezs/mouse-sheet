@@ -31,7 +31,7 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'aws-sdk-s3', require: false 
 gem 'active_storage_validations'
-
+gem 'newrelic_rpm'
 #use paperclip for mouse images
 # gem 'paperclip'
 # Reduces boot times through caching; required in config/boot.rb
