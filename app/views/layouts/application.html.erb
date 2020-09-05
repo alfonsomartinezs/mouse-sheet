@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MouseSheet</title>
+    <title>Mouse Sheet</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@700&family=Quicksand&display=swap" rel="stylesheet">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     
     <header class="container flex">
-      <%= link_to "Guard Tools", "#", :class => "logo"%>
+      <%= link_to "Mouse Sheet", "#", :class => "logo"%>
       <nav class='nav'>
       <% if user_signed_in? %>
         <%= link_to('Logout', destroy_user_session_path, method: :delete) %>

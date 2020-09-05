@@ -8,24 +8,8 @@
   <%= link_to "edit", edit_character_path(@character),class: "button button-primary"%>
   <%= link_to "delete", character_path(@character), method: :delete, class: "button"%>
 <% end %>
-<p>
-  <% if current_user and current_user.id == @character.user_id %>
-  <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_fate_path(@character), method: :put, class: "button button-increment" %>
-  <% end %>
-  <strong>Fate:</strong> <%= @character.fate%>
-  <% if current_user and current_user.id == @character.user_id %>
-  <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_fate_path(@character), method: :put, class: "button button-increment" %>
-  <% end %>
-</P>
-<p>
-  <% if current_user and current_user.id == @character.user_id %>
-  <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_persona_path(@character), method: :put, class: "button button-increment" %>
-  <% end %>
-  <strong>Persona:</strong> <%= @character.persona%>
-  <% if current_user and current_user.id == @character.user_id %>
-  <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_persona_path(@character), method: :put, class: "button button-increment" %>
-  <% end %>
-</P>
+
+
 </div>
 
 <div class="aspects">
@@ -94,13 +78,27 @@
 </div>
 
 <div class="attributes">
-<h4>Attributes</h4>
-<ul class="attributes-list">
-<li>Nature: <%= @character.nature %></li>
-<li>Will: <%= @character.will %></li>
-<li>Health: <%= @character.health %></li>
-<li>Resources: <%= @character.resources %></li>
-<li>Circles: <%= @character.circles %></li>
+  <h4>Attributes</h4>
+  <ul class="attributes-list">
+  <li><strong>Nature:</strong> <%= @character.nature %></li>
+  <li><strong>Will:</strong> <%= @character.will %></li>
+  <li><strong>Health:</strong> <%= @character.health %></li>
+  <li><strong>Resources:</strong> <%= @character.resources %></li>
+  <li><strong>Circles:</strong> <%= @character.circles %></li>
+  <li>
+    <strong>Fate:</strong> <%= @character.fate%>
+    <% if current_user and current_user.id == @character.user_id %>
+      <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_fate_path(@character), method: :put, class: "button button-increment" %>
+      <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_fate_path(@character), method: :put, class: "button button-increment" %>
+    <% end %>
+  </li>
+  <li>
+    <strong>Persona:</strong> <%= @character.persona%>
+    <% if current_user and current_user.id == @character.user_id %>
+    <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_persona_path(@character), method: :put, class: "button button-increment" %>
+    <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_persona_path(@character), method: :put, class: "button button-increment" %>
+    <% end %>
+  </li>
 </ul>
 </div>
 
