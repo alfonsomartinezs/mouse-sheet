@@ -13,6 +13,8 @@ amazon:
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   region: us-west-1
   bucket: mouse-sheet-uploads
+  upload:
+    cache_control: 'max-age=86400, private'
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:

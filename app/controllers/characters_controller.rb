@@ -120,17 +120,26 @@ class CharactersController < ApplicationController
 
 
   def update
+    puts params
     @character = Character.find(params[:id])
     @character.update(character_params)
-    @character.mentor_profession  = params[:mentor_profession]
-    @character.parent_profession  = params[:parent_profession]
-    @character.artisan_profession = params[:artisan_profession] 
-    @character.city = City.find(params[:city])
-    @character.rank = Rank.find(params[:rank])
+    @character.mentor_profession  = params[:mentor_profession].nil?  ? @character.mentor_profession  : params[:mentor_profession] 
+    @character.parent_profession  = params[:parent_profession].nil?  ? @character.parent_profession  : params[:parent_profession] 
+    @character.artisan_profession = params[:artisan_profession].nil? ? @character.artisan_profession : params[:artisan_profession]
+    @character.city = params[:city].nil? ? @character.city : City.find(params[:city]) 
+    @character.rank = params[:rank].nil? ? @character.rank : Rank.find(params[:rank]) 
     @character.save
 
+    
     flash.notice = "Character '#{@character.name}' Updated." 
-    redirect_to character_path(@character)
+
+    if params[:rank].nil?
+      puts "rendering"
+      render :show
+    else
+      puts "redirecting"
+      redirect_to character_path(@character)
+    end
   end
 
 

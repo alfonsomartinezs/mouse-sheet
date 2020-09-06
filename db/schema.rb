@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_024552) do
+ActiveRecord::Schema.define(version: 2020_09_06_194810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,11 @@ ActiveRecord::Schema.define(version: 2020_09_06_024552) do
     t.datetime "image_updated_at"
     t.integer "fate", default: 1
     t.integer "persona", default: 1
+    t.boolean "is_sick", default: false, null: false
+    t.boolean "is_hungry", default: false, null: false
+    t.boolean "is_angry", default: false, null: false
+    t.boolean "is_tired", default: false, null: false
+    t.boolean "is_injured", default: false, null: false
     t.index ["city_id"], name: "index_characters_on_city_id"
     t.index ["rank_id"], name: "index_characters_on_rank_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
