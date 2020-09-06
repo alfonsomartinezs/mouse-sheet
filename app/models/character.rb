@@ -9,10 +9,11 @@ class Character < ApplicationRecord
   has_many :skills, through: :advancements
   has_many :trait_advancements, dependent: :destroy
   has_many :traits, through: :trait_advancements
+  has_many :conditions, dependent: :destroy
   has_many :items, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
   validates :image, content_type: [:jpg,:jpeg,:png]
 
 

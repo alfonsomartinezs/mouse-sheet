@@ -350,7 +350,7 @@ traits = [
  {name:"young",description:"This mouse, no matter his actual age, is vigorous
  and youthful. He’s healthy and rarely gets tired
  or sick. The youthful exuberance often comes
- with a youthful impatience."},
+ with a youthful impatience."}
 ]
  
 Trait.create(traits)
@@ -400,3 +400,57 @@ rank_attrs = [
   {name: "Guard Captain",rank_will: 6, rank_health: 3, rank_resources: 5, rank_circles: 4}
 ]
 Rank.create(rank_attrs)
+
+
+##Seed condition_types
+ConditionType.destroy_all
+
+condition_types = [
+  {name:"Angry",
+  description:"Life int he guard can be frustrating. 
+  The Guard are caretakers and problem solvers; mice from all over the territories seek them out and lay problems at their paws. 
+  It's important for a guardmouse to keep a cool head and an objective viewpoint.",
+  consequence:"Being Angry subtracts 1 from your disposition for any conflict that uses Will as its base."},
+  {name:"Hungry and Thirsty",
+  description:"Being Hungry and Thirsty can impair your
+  guardmouse when it’s time for him to step up
+  and face danger. A wise mouse once said, “The
+  Guard fights on its stomach.” A well-fed guard
+  is a brave guard.",
+  consequence:"Hungry and Thirsty subtracts 1 from
+  disposition for any conflict. "},
+  {name:"Tired",
+  description:"The labors of the Guard are ceaseless and
+  exhausting. The work is never done, but it’s
+  important to get enough rest. An exhausted
+  guardmouse can jeopardize the mission.",
+  consequence:"Tired subtracts 1 disposition from all
+  conflicts."},
+  {name:"Injured",
+  description:"The Guard put their very lives on the line every
+  day. They’re often Injured in their efforts.
+  Injuries are difficult things. They don’t take a
+  guardmouse out of action, but they reduce his
+  overall effectiveness",
+  consequence:"Being Injured imposes a -1D penalty to
+  Nature, Will, Health and skill tests. This
+  penalty is not applied to Resources and Circles
+  tests, nor to Will and Health tests for recovery."},
+  {name:"Sick",
+  description:"Being out in the cold and wet, exposed to the
+  raw edge of nature, a guardmouse is always at
+  risk of falling ill. It’s important to eat right and
+  keep warm and dry, lest you get Sick.",
+  consequence:"Being Sick imposes a -1D penalty to
+  Nature, Will, Health and skill tests. This
+  penalty is not applied to Resources and Circles
+  tests, nor to Will and Health tests for recovery"} 
+]
+
+condition_types.each do |type|
+  ct = ConditionType.new(type)
+  unless ct.valid?
+    puts ct.errors.full_messages
+  end
+  ct.save
+end
