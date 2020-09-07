@@ -455,3 +455,11 @@ condition_types.each do |type|
   end
   ct.save
 end
+
+## Seed demo user
+
+demo_user = User.new
+demo_user.email = "test@mail.com"
+demo_user.password = "password"
+demo_user.password_confirmation = "password"
+demo_user.save
