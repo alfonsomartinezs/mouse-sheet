@@ -14,6 +14,7 @@ class Character < ApplicationRecord
 
   has_one_attached :image, dependent: :destroy
   validates :image, content_type: [:jpg,:jpeg,:png]
+  after_commit :add_default_image, on: %i[create update]
 
 
   def thumbnail
@@ -23,5 +24,22 @@ class Character < ApplicationRecord
   def character_image 
     return self.image.variant(resize: '300x300')
   end
+
+  private
+  def add_default_image
+    unless image.attached?
+      image.attach(
+        io: File.open(
+          Rails.root.join(
+            'app','assets','images','default_image.jpg'
+          )
+        ),
+        filename: 'default_image.jpg',
+        content_type: 'image/jpg'
+      )
+    end
+  end
+
+
 
 end
