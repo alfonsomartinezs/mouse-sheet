@@ -99,21 +99,12 @@ ActiveRecord::Schema.define(version: 2020_09_06_194810) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "condition_types", force: :cascade do |t|
+  create_table "conditions", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "consequence"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "conditions", force: :cascade do |t|
-    t.bigint "condition_type_id", null: false
-    t.bigint "character_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["character_id"], name: "index_conditions_on_character_id"
-    t.index ["condition_type_id"], name: "index_conditions_on_condition_type_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -197,8 +188,6 @@ ActiveRecord::Schema.define(version: 2020_09_06_194810) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "advancements", "characters"
   add_foreign_key "advancements", "skills"
-  add_foreign_key "conditions", "characters"
-  add_foreign_key "conditions", "condition_types"
   add_foreign_key "contacts", "characters"
   add_foreign_key "items", "characters"
   add_foreign_key "trait_advancements", "characters"

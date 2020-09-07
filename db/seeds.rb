@@ -403,11 +403,12 @@ Rank.create(rank_attrs)
 
 
 ##Seed condition_types
-ConditionType.destroy_all
+Condition.destroy_all
 
 condition_types = [
   {name:"Angry",
-  description:"Life int he guard can be frustrating. 
+  description:"Life in 
+  the guard can be frustrating. 
   The Guard are caretakers and problem solvers; mice from all over the territories seek them out and lay problems at their paws. 
   It's important for a guardmouse to keep a cool head and an objective viewpoint.",
   consequence:"Being Angry subtracts 1 from your disposition for any conflict that uses Will as its base."},
@@ -448,7 +449,7 @@ condition_types = [
 ]
 
 condition_types.each do |type|
-  ct = ConditionType.new(type)
+  ct = Condition.new(type)
   unless ct.valid?
     puts ct.errors.full_messages
   end
