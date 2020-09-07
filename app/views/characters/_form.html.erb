@@ -1,5 +1,10 @@
 <%= form_for(@character, html: {multipart: true}) do |f| %>
-
+  <% unless @character.new_record? %>
+    <div class="tooltip" data-tooltip= "Don't want others seeing your mouse?">
+    <%= f.label :private, "Private?", :class => "privacy-box"%>
+    <%= f.check_box :private %>
+    </div>
+  <% end %>
   <%= f.label :name%>
   <%= f.text_field :name%>
   <%= f.label :age %>

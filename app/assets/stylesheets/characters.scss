@@ -272,7 +272,7 @@ h1{
   --scale: 0;
   position: absolute;
   transition: 200ms all;
-  left: 50%;
+  left: 25px;
   content: attr(data-tooltip);
   background: rgba(255,255,255,.95);
   color: #444;
@@ -281,8 +281,8 @@ h1{
   transform: translateX(-50%) translateY(-100%) scale(var(--scale));
   transform-origin: bottom center;
   padding: .6rem;
-  // width: max-content;
   width: 100%;
+  max-width: max-content;
 }
 
 .tooltip::before:hover{

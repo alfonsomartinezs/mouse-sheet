@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_194810) do
+ActiveRecord::Schema.define(version: 2020_09_07_084446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_194810) do
     t.boolean "is_angry", default: false, null: false
     t.boolean "is_tired", default: false, null: false
     t.boolean "is_injured", default: false, null: false
+    t.boolean "private", default: false, null: false
     t.index ["city_id"], name: "index_characters_on_city_id"
     t.index ["rank_id"], name: "index_characters_on_rank_id"
     t.index ["user_id"], name: "index_characters_on_user_id"

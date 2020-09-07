@@ -6,7 +6,8 @@ class CharactersController < ApplicationController
       @user  = current_user
       @user_characters = @user.characters
     end
-    @other_characters = Character.where.not(user: @user)
+    user_id = @user ? @user.id : -1
+    @other_characters = Character.where("user_id <> #{user_id} AND private = false")
 
   end
   def new

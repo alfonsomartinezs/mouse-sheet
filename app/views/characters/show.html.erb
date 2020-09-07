@@ -24,15 +24,15 @@
     <li class="tooltip" data-tooltip="<%= Condition.find_by(name: "Hungry and Thirsty").description %>">
       <%= f.check_box :is_hungry,:onclick =>"this.form.submit()",  :class => "condition-check-box"%>
       <% if @character.is_hungry %>
-        <%= f.label :is_hungry, "Hungry and Tired", :class => "condition-label" %>
-      <% else %>
         <%= f.label :is_hungry, "Hungry and Tired", :class => "condition-label checked" %>
+      <% else %>
+        <%= f.label :is_hungry, "Hungry and Tired", :class => "condition-label" %>
       <% end %>
     </li>
     <li class="tooltip" data-tooltip="<%= Condition.find_by(name: "Sick").description %>">
       <%= f.check_box :is_sick,:onclick =>"this.form.submit()",  :class => "condition-check-box"%>
       <% if @character.is_sick %>  
-        <%= f.label :is_sick, "Sick", :class => "condition-label" %>
+        <%= f.label :is_sick, "Sick", :class => "condition-label checked" %>
       <% else %>
         <%= f.label :is_sick, "Sick", :class => "condition-label" %>
       <% end %>
@@ -40,17 +40,17 @@
     <li class="tooltip" data-tooltip="<%= Condition.find_by(name: "Tired").description %>">  
       <%= f.check_box :is_tired,:onclick =>"this.form.submit()",  :class => "condition-check-box"%>
       <% if @character.is_tired %>
-        <%= f.label :is_tired, "Tired", :class => "condition-label" %>
-      <% else %>
         <%= f.label :is_tired, "Tired", :class => "condition-label checked" %>
+      <% else %>
+        <%= f.label :is_tired, "Tired", :class => "condition-label" %>
       <% end %>
     </li>
     <li class ="tooltip" data-tooltip="<%= Condition.find_by(name: "Injured").description %>">
       <%= f.check_box :is_injured,:onclick =>"this.form.submit()",  :class => "condition-check-box"%>
       <% if @character.is_injured %>
-        <%= f.label :is_injured, "Injured", :class => "condition-label" %>
-      <% else %>
         <%= f.label :is_injured, "Injured", :class => "condition-label checked" %>
+      <% else %>
+        <%= f.label :is_injured, "Injured", :class => "condition-label" %>
       <% end %>
     </li>
   <% end %>
