@@ -47,7 +47,7 @@ class CharactersController < ApplicationController
     
     rank_skills[@character.rank.name].each do |skill| 
       puts "learning #{skill}"
-      starting_skills[skill] = 2 if starting_skills[skill].nil?  
+      starting_skills[skill] = 1 if starting_skills[skill].nil?  
       starting_skills[skill] += 1
     end
 
