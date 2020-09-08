@@ -96,6 +96,9 @@ ActiveRecord::Schema.define(version: 2020_09_07_084446) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
+    t.string "description"
+    t.string "skill_list"
+    t.string "trait_list"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
