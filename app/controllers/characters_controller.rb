@@ -144,7 +144,34 @@ class CharactersController < ApplicationController
   end
 
 
+  artisan_professions = [
+    ["Apiarist","Apiarist"],
+    ["Archivist","Archivist"],
+    ["Armorer","Armorer"],
+    ["Baker","Baker"],
+    ["Brewer","Brewer"],
+    ["Carpenter","Carpenter"],
+    ["Cartographer","Cartographer"],
+    ["Glazier","Glazier"],
+    ["Harvester","Harvester"],
+    ["Insectrist","Insectrist"],
+    ["Miller","Miller"],
+    ["Potter","Potter"],
+    ["Smith","Smith"],
+    ["Stonemason","Stonemason"],
+    ["Weaver","Weaver"] 
+  ]
 
+  mentor_professions = [
+    ["Fighter","Fighter"],
+    ["Healer","Healer"],
+    ["Hunter","Hunter"],
+    ["Instructor","Instructor"],
+    ["Pathfinder","Pathfinder"],
+    ["Scout","Scout"],
+    ["Survivalist","Survivalist"],
+    ["Weather Watcher","Weather Watcher"],
+  ]
 
 
 end
