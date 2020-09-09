@@ -1,13 +1,3 @@
-function FlashFade(){
-  notices = document.getElementsByClassName("notice");
-  for (let notice of notices){
-    notice.classList.add("hidden");
-  }
-  console.log("fadin'");
-}
-
-setTimeout(FlashFade,2000);
-
 
 console.log("you're in the right place.")
 
@@ -45,3 +35,18 @@ $('#2-to-1').on("click",function(event){
   $('#section-1').toggleClass('hidden');
   $('#section-2').toggleClass('hidden');
 });
+
+
+//group script
+$('#show-modal').on("click",function(event){
+  console.log("opening new form");
+  $('#form-modal').removeClass('minimized');
+});
+
+$('#hide-modal').on("click",function(event){
+  console.log("opening new form");
+  $('#form-modal').addClass('minimized');
+});
+
+
+console.log('groupsss')

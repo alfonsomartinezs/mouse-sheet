@@ -16,3 +16,14 @@ require("jquery")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+
+function FlashFade(){
+  notices = document.getElementsByClassName("notice");
+  for (let notice of notices){
+    notice.classList.add("hidden");
+  }
+  console.log("fadin'");
+}
+
+setTimeout(FlashFade,2000);

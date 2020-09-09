@@ -1,0 +1,31 @@
+<div class="container"> 
+
+  <h1>Your Groups</h1>
+  <ul>
+  <% @groups.each do |group|%>
+    <li><%= link_to group.name, group_path(group) %></li>
+  <% end %>
+  </uL>
+  <br/>
+  <button class="button" id="show-modal" type="button">New Group</button>
+  <div class="form-modal minimized" id='form-modal'>
+  <%= form_with model: @group, :class=>"group-form" do |form|%>
+    <%= form.label :name%>
+    <%= form.text_field :name%><br/>
+    <%= form.submit :class=>"button button-primary"%><button class="button" id="hide-modal" type="button">Back</button>
+  <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%= javascript_pack_tag 'custom' %>

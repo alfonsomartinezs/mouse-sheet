@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     patch  :lose_persona
 
   end
+  resources :groups
   resources :skills
   resources :advancements do 
     patch  :pass 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_084446) do
+ActiveRecord::Schema.define(version: 2020_09_09_021010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,14 @@ ActiveRecord::Schema.define(version: 2020_09_07_084446) do
     t.index ["character_id"], name: "index_contacts_on_character_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.bigint "creator_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_groups_on_creator_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -193,6 +201,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_084446) do
   add_foreign_key "advancements", "characters"
   add_foreign_key "advancements", "skills"
   add_foreign_key "contacts", "characters"
+  add_foreign_key "groups", "users", column: "creator_id"
   add_foreign_key "items", "characters"
   add_foreign_key "trait_advancements", "characters"
   add_foreign_key "trait_advancements", "traits"
