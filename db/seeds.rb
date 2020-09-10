@@ -2,7 +2,6 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 Character.destroy_all
-User.destroy_all
 
 ##seed cities
 City.destroy_all
@@ -461,10 +460,17 @@ condition_types.each do |type|
   ct.save
 end
 
-## Seed demo user
+## Destroy Groups
+Group.destroy_all
 
-demo_user = User.new
-demo_user.email = "test@mail.com"
-demo_user.password = "password"
-demo_user.password_confirmation = "password"
-demo_user.save
+
+## Seed demo user
+User.destroy_all
+
+demo_users = [
+  {email:"demo1@mail.com",password:"password",password_confirmation:"password"},
+  {email:"demo2@mail.com",password:"password",password_confirmation:"password"},
+  {email:"demo3@mail.com",password:"password",password_confirmation:"password"},
+]
+
+User.create(demo_users)

@@ -1,6 +1,24 @@
 <div class="container">
   <h1>This is the Show Page</h1>
   <%= link_to "Back", groups_path, :class=>"button"%>
-  <p><%= @group.name%></p>
+  <p><%= @group.name%>(<%= @group.id%>)</p>
+  <p>Creator: <%= @group.creator.email %>
+
+
+  <h3>Members</h3>
+  <ul class="member list">
+  <% @memberships.each do |m| %>
+    <li><%= m.member.email %></li>
+  <% end %>
+  </ul>
+
+  <h3>Add member</h3>
+  <%= form_with model:@membership do |form|%>
+    <%= form.label :member%>
+    <%= form.select(:member, options_for_select(@users),include_blank:true)%>
+    <%= form.hidden_field :group_id, :value => @group.id  %>
+    <%= form.submit %>
+  <% end %>
+
 
 </div>
