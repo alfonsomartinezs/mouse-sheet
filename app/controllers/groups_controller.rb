@@ -28,10 +28,18 @@ class GroupsController < ApplicationController
     @members = @memberships_all.map {|m| m.member_id}.join(",")
     puts @members
     @users = User.where("id NOT IN (#{@members})").collect {|u| [u.email, u.id]}
+
     @membership = UserMembership.new
+    @character_membership = CharacterMembership.new
+
+    @characters = @group.characters
+    character_ids = @characters.map{|c| c.id}.join(",")
+    if @characters.count > 0
+      @user_characters = current_user.characters.where("id NOT IN (#{character_ids})").collect {|c| [c.name, c.id]}
+    else
+      @user_characters = current_user.characters.collect {|c| [c.name, c.id]}
+    end
+
   end
 
 end
-
-
-is_member

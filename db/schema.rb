@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_035040) do
+ActiveRecord::Schema.define(version: 2020_09_11_015119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,15 @@ ActiveRecord::Schema.define(version: 2020_09_10_035040) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_advancements_on_character_id"
     t.index ["skill_id"], name: "index_advancements_on_skill_id"
+  end
+
+  create_table "character_memberships", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["character_id"], name: "index_character_memberships_on_character_id"
+    t.index ["group_id"], name: "index_character_memberships_on_group_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -211,6 +220,8 @@ ActiveRecord::Schema.define(version: 2020_09_10_035040) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "advancements", "characters"
   add_foreign_key "advancements", "skills"
+  add_foreign_key "character_memberships", "characters"
+  add_foreign_key "character_memberships", "groups"
   add_foreign_key "contacts", "characters"
   add_foreign_key "groups", "users", column: "creator_id"
   add_foreign_key "items", "characters"

@@ -12,6 +12,9 @@ class Character < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :contacts, dependent: :destroy
 
+  has_many :character_memberships, dependent: :destroy
+  has_many :groups, through: :character_memberships 
+
   has_one_attached :image, dependent: :destroy
   validates :image, content_type: [:jpg,:jpeg,:png]
   after_commit :add_default_image, on: %i[create update]

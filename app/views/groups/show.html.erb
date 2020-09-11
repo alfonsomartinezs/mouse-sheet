@@ -1,23 +1,65 @@
 <div class="container">
   <h1><%= @group.name%></h1>
   <p>Created by <%= @group.creator.email %></p>
+  <p>
+    Members: <%= @memberships.map{|m| m.member.email}.join(",")%>
+  </p>
   <%= link_to "Back", groups_path, :class=>"button"%>
+  <button class="button" id="show-user-modal" type="button">Add Member</button>
+  <h3>Characters</h3>
+  <div class="characters">
+    <% @characters.each do |character|%>
+      <div class="character">
+          <%= link_to character_path(character) do%>
+                <div class="character-thumb">
+                <%= image_tag character.thumbnail if character.image.attached? %>
+                </div>
+                <div class="character-text">
+                <h3> <%= character.name %> </h3>
+                <% if character.belief.length > 0 %>
+                <p>
+                "<%= 
+                  if character.belief.length > 77 
+                    character.belief[0..75]+"..."
+                  else
+                    character.belief
+                  end
+                %>"
+                </p>
+              <% end %>
+            </div>
+          <%end %>    
+          <% membership_id = CharacterMembership.where("character_id = #{character.id} AND group_id = #{@group.id}").first.id%>
+          <%= link_to "remove", character_membership_path(membership_id), :class => "button button-small character-remover", method: :delete%>
+        </div>
+    <% end %>
 
-  <h3>Members</h3>
-  <ul class="member list">
-  <% @memberships.each do |m| %>
-    <li><%= m.member.email %></li>
-  <% end %>
-  </ul>
-  <button class="button" id="show-modal" type="button">Add Member</button>
-  <div class="form-modal minimized" id='form-modal'>
+  </div>
+
+  <button class="button" id="show-character-modal" type="button">Add Character</button>
+  
+  <div class='form-modal minimized' id="character-form-modal">
+    <%= form_with model:@character_membership, :class=> "group-form" do |form| %>
+      <h3>Add Character</h3>
+      <%= form.hidden_field :group_id, :value => @group.id  %>
+      <%= form.select "character", options_for_select(@user_characters),include_blank: true%>
+      <br/>
+      <%= form.submit "Add Character", :class => "button button-primary"%>
+      <button class="button" id="hide-character-modal" type="button">Back</button>
+    <%end%>
+  </div>
+
+
+
+  <div class="form-modal minimized" id='user-form-modal'>
     <%= form_with model:@membership, :class => "group-form" do |form|%>
     <h3>Add member</h3>
       <%= form.label :member%>
       <%= form.select(:member, options_for_select(@users),include_blank:true)%>
       <%= form.hidden_field :group_id, :value => @group.id  %>
-      <button class="button" id="hide-modal" type="button">Back</button>
+      <br/>
       <%= form.submit  "Add Member", :class => "button button-primary"%>
+      <button class="button" id="hide-user-modal" type="button">Back</button>
     <% end %>
   </div>
 </div>

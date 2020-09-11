@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     patch  :approve 
     put    :approve
   end
+  resources :character_memberships
   resources :skills
   resources :advancements do 
     patch  :pass 
