@@ -2,8 +2,8 @@
 
   <h1>Your Groups</h1>
   <ul>
-  <% @groups.each do |group|%>
-    <li><%= link_to group.name, group_path(group.id) %></li>
+  <% @memberships.each do |membership|%>
+    <li><%= link_to membership.group.name, group_path(membership.group.id) %></li>
   <% end %>
   </uL>
   <br/>
@@ -15,14 +15,25 @@
     <%= form.submit :class=>"button button-primary"%><button class="button" id="hide-modal" type="button">Back</button>
   <% end %>
   </div>
+
+<h3>Pending Memberships</h3>
+<ul>
+  <% if @pending_memberships%>
+    <% @pending_memberships.each do |m|%>
+      <li><%= m.group.name%> --invited by <%= m.group.creator.email%> <%= link_to "Approve", user_membership_approve_path(m),method: :put%></li>
+    <% end %>
+  <% else %>
+    <p>You don't have any pending memberships</p>
+  <% end %>
+</ul>
+
+
+
+
+
+
+
+
+
+
 </div>
-
-
-
-
-
-
-
-
-
-<%= javascript_pack_tag 'custom' %>

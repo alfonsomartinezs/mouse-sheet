@@ -13,7 +13,10 @@ Rails.application.routes.draw do
 
   end
   resources :groups
-  resources :user_memberships
+  resources :user_memberships do
+    patch  :approve 
+    put    :approve
+  end
   resources :skills
   resources :advancements do 
     patch  :pass 

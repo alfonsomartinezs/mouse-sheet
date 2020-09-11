@@ -1,6 +1,9 @@
 <h1>Pending Memberships</h1>
 <ul>
 <% @pending_memberships.each do |m|%>
-  <li>This is one</li>
+  <li>m.name  <%= link_to "Approve", user_membership_approve_path(m),method: :put%></li>
 <% end %>
 </ul>
+
+
+

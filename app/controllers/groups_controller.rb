@@ -1,9 +1,9 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @groups = current_user.groups
+    @memberships = current_user.user_memberships.where(approved: true)
     @group = Group.new
-
+    @pending_memberships = current_user.user_memberships.where(approved: false)
 
   end
 
@@ -23,12 +23,15 @@ class GroupsController < ApplicationController
 
   def show 
     @group = Group.find(params[:id])
-    @memberships = @group.user_memberships
-    ##switch to this one when users can approve memberships
-    # @memberships = @group.user_memberships.where(approved: true)
-    @members = @memberships.map {|m| m.member_id}.join(",")
+    @memberships = @group.user_memberships.where(approved: true)
+    @memberships_all = @group.user_memberships
+    @members = @memberships_all.map {|m| m.member_id}.join(",")
     puts @members
     @users = User.where("id NOT IN (#{@members})").collect {|u| [u.email, u.id]}
     @membership = UserMembership.new
   end
+
 end
+
+
+is_member

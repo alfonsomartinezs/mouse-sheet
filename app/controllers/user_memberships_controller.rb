@@ -6,7 +6,6 @@ class UserMembershipsController < ApplicationController
     @membership.member_id = params[:user_membership][:member]
     @membership.group_id  = @group.id
 
-    puts @membership.valid?
     puts @membership.errors.full_messages
     @membership.save
 
@@ -16,4 +15,13 @@ class UserMembershipsController < ApplicationController
   def index 
     @pending_memberships = current_user.user_memberships.where(approved: false)
   end
+
+  def approve
+    @membership = UserMembership.find(params[:user_membership_id])
+    @membership.approved = true
+    @membership.save
+
+    redirect_to groups_path
+  end
+
 end

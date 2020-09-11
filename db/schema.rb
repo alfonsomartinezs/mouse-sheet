@@ -171,7 +171,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_035040) do
   end
 
   create_table "user_memberships", force: :cascade do |t|
-    t.string "admin", default: "f", null: false
+    t.boolean "admin", default: false, null: false
     t.boolean "approved", default: false, null: false
     t.bigint "member_id"
     t.bigint "group_id"
