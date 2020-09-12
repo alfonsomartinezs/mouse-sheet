@@ -13,8 +13,8 @@
 
 
 <section class="characters-section container">
-  <h3>Your Characters</h3>
 <% if @user %>
+  <h3>Your Characters</h3>
   <div class="characters">  
     <% @user_characters.each do |character|%>
         <div class="character">
@@ -40,14 +40,10 @@
         </div>
     <% end %>
   </div>
-<% else %>
-<p>
-  You may sign up or sign in using "test@mail.com" and the password "password" to preview some character sheets.
-</p>
 <% end %>
 
 
-<h3>Other Characters</h3>
+<h3>Public Characters</h3>
 <div class="characters">
   <% @other_characters.each do |character|%>
         <div class="character">

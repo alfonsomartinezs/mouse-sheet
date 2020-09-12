@@ -24,4 +24,12 @@ class UserMembershipsController < ApplicationController
     redirect_to groups_path
   end
 
+  def destroy
+    @membership = UserMembership.find(params[:id])
+    @membership.destroy 
+
+    flash.alert = "Left Group"
+    redirect_to groups_path
+  end
+
 end

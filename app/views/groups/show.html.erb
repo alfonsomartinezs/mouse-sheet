@@ -1,12 +1,20 @@
 <div class="container">
   <h1><%= @group.name%></h1>
+  <% if @current_membership.admin%>
+    <%= link_to "Delete This Group", group_path(@group), method: :delete%>
+  <% else %>
+    <%= link_to "Leave Group", user_membership_path(@current_membership), method: :delete%>
+  <% end %>
   <p>Created by <%= @group.creator.email %></p>
   <p>
     Members: <%= @memberships.map{|m| m.member.email}.join(",")%>
   </p>
   <%= link_to "Back", groups_path, :class=>"button"%>
-  <button class="button" id="show-user-modal" type="button">Add Member</button>
+  <% if @current_membership.admin%>
+    <button class="button" id="show-user-modal" type="button">Add Member</button>
+  <% end %>
   <h3>Characters</h3>
+
   <div class="characters">
     <% @characters.each do |character|%>
       <div class="character">

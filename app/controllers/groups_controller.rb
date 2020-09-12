@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
     @membership = UserMembership.new 
     @membership.member_id = current_user.id
     @membership.group_id = @group.id
+    @membership.admin = true
     @membership.approved = true
     @membership.save
 
@@ -28,7 +29,7 @@ class GroupsController < ApplicationController
     @members = @memberships_all.map {|m| m.member_id}.join(",")
     puts @members
     @users = User.where("id NOT IN (#{@members})").collect {|u| [u.email, u.id]}
-
+    @current_membership = UserMembership.where("group_id = '#{@group.id}' AND member_id = '#{current_user.id}'").first
     @membership = UserMembership.new
     @character_membership = CharacterMembership.new
 
@@ -40,6 +41,14 @@ class GroupsController < ApplicationController
       @user_characters = current_user.characters.collect {|c| [c.name, c.id]}
     end
 
+  end
+
+  def destroy 
+    @group = Group.find(params[:id])
+    @group.destroy 
+
+    flash.alert = "Group Destroyed"
+    redirect_to groups_path
   end
 
 end
