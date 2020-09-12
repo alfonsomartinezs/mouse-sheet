@@ -241,6 +241,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  actionview (>= 6.0.3.3)
   active_storage_validations
   aws-sdk-s3
   bootsnap (>= 1.4.2)

@@ -10,7 +10,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 
 #use postgresql as database
 gem 'pg'
-
+gem "actionview", ">= 6.0.3.3"
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
