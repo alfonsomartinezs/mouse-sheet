@@ -1,6 +1,6 @@
 <div class="container grid character-sheet">
 
-<div class="header">
+<div class="character-header sheet-section">
 <h1><%= @character.name %></h1>
 <p><%= image_tag @character.character_image if @character.image.attached? %></p>
 <%= link_to "back", characters_path(), class: "button"%>
@@ -10,7 +10,7 @@
 <% end %>
 </div>
 
-<div class="conditions attributes">
+<div class="conditions attributes sheet-section">
   <h4>Conditions</h4>
   <%= form_with model: @character, class:"conditions-form" do |f|%>
     <li class="tooltip" data-tooltip="<%= Condition.find_by(name: "Angry").description %>">
@@ -60,7 +60,7 @@
 </div>
 
 
-<div class="aspects">
+<div class="aspects sheet-section">
 <h4>Aspects</h4>
 <ul class="aspects-list">
   <li><strong>Age:</strong> <%= @character.age %></li>
@@ -71,7 +71,7 @@
 </ul>
 </div>
 
-<div class="relationships">
+<div class="relationships sheet-section">
 <h4>Relationships</h4>
 <ul class="relationships-list">
   <li><strong>Parents:</strong> <%= @character.parents %>(<%= @character.parent_profession%>)</li>
@@ -82,7 +82,7 @@
 </ul>
 </div>
 
-<div class="worldview">
+<div class="worldview sheet-section">
 <h4>Worldview</h4>
 <ul class="worldview-list">
 <li><strong>Belief:</strong> <%= @character.belief %></li>
@@ -91,7 +91,7 @@
 </ul>
 </div>
 
-<div class="gear">
+<div class="gear sheet-section">
 <h4>Gear</h4>
 <ul class="gear-list">
   <% @character.items.each do |item|%>
@@ -104,7 +104,7 @@
 </div>
 
 
-<div class="traits">
+<div class="traits sheet-section">
 <h4>Traits</h4>
 <ul class="traits-list">
 <% @character.trait_advancements.each do |advancement|%>
@@ -123,7 +123,7 @@
 </ul>
 </div>
 
-<div class="attributes abilities">
+<div class="attributes abilities sheet-section">
   <h4>Abilities</h4>
   <ul class="attributes-list abilities-list">
   <li><strong>Nature:</strong> <%= @character.nature %></li>
@@ -148,7 +148,7 @@
 </ul>
 </div>
 
-<div class="skills">
+<div class="skills sheet-section">
 <h4>Skills</h4>
 <ul class= "skills-list">
 <% @character.advancements.each do |advancement|%>
@@ -169,7 +169,7 @@
 </ul>
 </div> 
 
-<div class="wises">
+<div class="wises sheet-section">
 <h4>Wises</h4>
 <ul class="wises-list">
 <% @character.wisdoms.each do |wisdom|%>

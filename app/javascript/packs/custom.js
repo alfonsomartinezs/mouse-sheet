@@ -68,3 +68,8 @@ $("#hide-user-modal").on("click", function(event) {
 });
 
 console.log("groupsss");
+
+$("#nav-toggle").on("click", function(event) {
+  console.log("toggling nav menu");
+  $("#nav-list").toggleClass("minimized");
+});

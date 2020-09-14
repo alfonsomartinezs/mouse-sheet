@@ -1,4 +1,7 @@
-  <% 
+
+<div class = "container">
+
+    <% 
     cities = []
     City.find_each do |city|
       c = [city.name,city.id]
@@ -64,37 +67,39 @@
 
 
 
-<%= form_for(@character, html: {multipart: true}) do |f| %>
+<%= form_with model:@character, html: {multipart: true}, :class => "character-form" do |f| %>
   <div class="form-section" id="section-1">
     <h3>Personal Info (1/4)</h3>
-    <% unless @character.new_record? %>
-      <div class="tooltip" data-tooltip= "Don't want others seeing your mouse?">
-      <%= f.label :private, "Private?", :class => "privacy-box"%>
-      <%= f.check_box :private %>
-      </div>
-    <% end %>
-
-    <%= f.label :name%>
-    <%= f.text_field :name%>
-    <%= f.label :rank%>
-    <%= select_tag(:rank, options_for_select(ranks,@character.rank ? @character.rank.id : 1))%>
-    <%= f.label :age %>
-    <%= f.number_field :age%>
-    <%= f.label :city, "Home"%>
-    <%= select_tag(:city, options_for_select(cities, @character.city ? @character.city.id : 1))%>
-    <%= f.label :fur_color%>
-    <%= f.text_field :fur_color%>
-    <%= f.label :cloak_color%>
-    <%= f.text_field :cloak_color%>
-
-    <p>
-      <% if @character.image.attached? %>
-          <%= image_tag @character.character_image %><br/>
+    <div class="input-section">
+      <div class="input-col">
+      <% unless @character.new_record? %>
+        <div class="tooltip" data-tooltip= "Don't want others seeing your mouse?">
+        <%= f.label :private, "Private?", :class => "privacy-box"%>
+        <%= f.check_box :private %>
+        </div>
       <% end %>
-      <%= f.label :image, "Attach a New Image" %><br />
-      <%= f.file_field :image %>
-    </p>
 
+      <%= f.label :name%>
+      <%= f.text_field :name%>
+      <%= f.label :rank%>
+      <%= select_tag(:rank, options_for_select(ranks,@character.rank ? @character.rank.id : 1))%>
+      <%= f.label :age %>
+      <%= f.number_field :age%>
+      <%= f.label :city, "Home"%>
+      <%= select_tag(:city, options_for_select(cities, @character.city ? @character.city.id : 1))%>
+      <%= f.label :fur_color%>
+      <%= f.text_field :fur_color%>
+      <%= f.label :cloak_color%>
+      <%= f.text_field :cloak_color%>
+      </div>
+      <div class="input-col">
+        <% if @character.image.attached? %>
+            <%= image_tag @character.character_image %><br/>
+        <% end %>
+        <%= f.label :image, "Attach a New Image" %><br />
+        <%= f.file_field :image %>
+      </div>
+    </div>
     <br/>
     <%= link_to "Back", characters_path, class: "button"%>
     <button class="button button-primary" id="1-to-2" type="button">Next</button>
@@ -102,18 +107,39 @@
 
   <div class="form-section hidden" id="section-2">
     <h3>Relationships (2/4)</h3>
-    <%= f.label :parents%>
-    <%= f.text_field :parents%>
-    <%= f.label :parent_profession%>
-    <%= select_tag(:parent_profession, options_for_select(parent_professions,@character.parent_profession)) %>
-    <%= f.label :senior_artisan%>
-    <%= f.text_field :senior_artisan%>
-    <%= f.label :artisan_profession%>
-    <%= select_tag(:artisan_profession, options_for_select(artisan_professions,@character.artisan_profession)) %>
-    <%= f.label :mentor%>
-    <%= f.text_field :mentor%>
-    <%= f.label :mentor_profession%>
-    <%= select_tag(:mentor_profession, options_for_select(mentor_professions,@character.mentor_profession)) %>
+    <div class="input-section">
+      <div class="input-col">
+        <%= f.label :parents%>
+        <%= f.text_field :parents%>
+      </div>
+      <div class="input-col">
+        <%= f.label :parent_profession%>
+        <%= select_tag(:parent_profession, options_for_select(parent_professions,@character.parent_profession)) %>
+      </div>
+    </div>
+    <div class="input-section">
+      <div class="input-col">
+        <%= f.label :senior_artisan%>
+        <%= f.text_field :senior_artisan%>
+      </div>
+      <div class="input-col">
+        <%= f.label :artisan_profession%>
+        <%= select_tag(:artisan_profession, options_for_select(artisan_professions,@character.artisan_profession)) %>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <div class="input-col">
+        <%= f.label :mentor%>
+        <%= f.text_field :mentor%>
+      </div>
+      <div class="input-col">
+            <%= f.label :mentor_profession%>
+            <%= select_tag(:mentor_profession, options_for_select(mentor_professions,@character.mentor_profession)) %>      
+      </div>
+    </div>
+
+
     <%= f.label :friend%>
     <%= f.text_field :friend%>
     <%= f.label :enemy%>
@@ -136,7 +162,8 @@
     <button class="button button-primary" id="3-to-4" type="button">Next</button>
   </div>
   <div class="form-section hidden" id="section-4">
-    <h3>Nature (4/4)</h3> 
+    <h3>Nature (4/4)</h3>
+    <p>All done! Hit submit to view your character.</p>  
     <% unless @character.new_record? %>
       <%= f.label :nature%>
       <%= f.number_field :nature%>
@@ -148,11 +175,11 @@
       <%= f.number_field :resources%>
       <%= f.label :circles%>
       <%= f.number_field :circles%>
-    <% else %>
-    <p>All done! Hit submit to view your character.</p> 
     <% end %>
     <br/>
     <button class="button" id="4-to-3" type="button">Back</button>
     <%= f.submit "Submit", :class => 'button-primary' %>
   </div>
 <% end %>
+
+</div>
