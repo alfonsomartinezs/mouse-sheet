@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "characters#index"
+  
+  root to: "application#home"
+  
+  get "/home", to: "application#home"
+
   resources :characters do
     put    :gain_fate
     patch  :gain_fate

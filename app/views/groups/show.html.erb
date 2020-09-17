@@ -1,4 +1,4 @@
-<div class="container">
+<section class="container">
   <h1><%= @group.name%></h1>
   <% if @current_membership.admin%>
     <%= link_to "Delete This Group", group_path(@group), method: :delete%>
@@ -70,4 +70,4 @@
       <button class="button" id="hide-user-modal" type="button">Back</button>
     <% end %>
   </div>
-</div>
+</section>

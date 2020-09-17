@@ -31,14 +31,17 @@
       </nav>
     </div>
     </header>
-    <div class="container">
+    
       <%if flash.notice%>
-        <p class="flash notice"><%= flash.notice%></p>
+        <div class="container">
+          <p class="flash notice"><%= flash.notice%></p>
+        </div>
       <% end %>
       <%if flash.alert%>
-        <p class="flash alert"><%= flash.alert%></p>
+        <div class="container">
+          <p class="flash alert"><%= flash.alert%></p>
+        </div>
       <% end %>
-    </div>
     <main>
       <%= yield %>
     </main>

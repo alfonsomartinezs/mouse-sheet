@@ -1,4 +1,4 @@
-<div class="container center-text">
+<section class="container center-text">
 <h1>Add a Skill</h1>
 <%= form_with model: @advancement do |form|%>
   <%= label_tag :name, "Skill Name"%>
@@ -12,4 +12,4 @@
   <%= form.submit "submit", class: "button button-primary"%>
 <% end %>
 <%= link_to "back", character_path(@character), class: "button"%>
-</div>
+</section>

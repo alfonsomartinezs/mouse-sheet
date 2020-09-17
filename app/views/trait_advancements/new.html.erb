@@ -1,4 +1,4 @@
-<div class="container center-text">
+<section class="container center-text">
   <h1>Add a Trait</h1>
   <%= form_with model:@trait_advancement do |form|%>
     <%= label_tag :name, "Trait Name"%>
@@ -16,6 +16,6 @@
     <%= form.submit "submit", class:"button button-primary"%>
   <% end %>
     <%= link_to "back", character_path(@character), class:"button"%>
-</div>
+</section>
 
 
