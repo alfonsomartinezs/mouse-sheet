@@ -154,10 +154,10 @@
 <% @character.advancements.each do |advancement|%>
   <li>
   <div class='skill'>
-    <span><%= advancement.skill.name.titleize %> <%= advancement.level%> (<%= advancement.passes %> passes /<%= advancement.fails%> fails)</span>
+    <span id="advancement-<%=advancement.id %>"><%= advancement.skill.name.titleize %> <%= advancement.level%> (<%= advancement.passes %> passes /<%= advancement.fails%> fails)</span>
     <% if current_user and current_user.id == @character.user_id %>
-      <%= link_to image_tag("icons/solid/check.svg"), advancement_pass_path(advancement),method: :put, class: "button button-increment"%>
-      <%= link_to image_tag("icons/solid/x.svg"), advancement_fail_path(advancement),method: :put, class: "button button-increment"%>
+      <%= link_to image_tag("icons/solid/check.svg"), advancement_pass_path(advancement),method: :put, remote: true, class: "button button-increment"%>
+      <%= link_to image_tag("icons/solid/x.svg"), advancement_fail_path(advancement),method: :put, remote:true, class: "button button-increment"%>
       <%= link_to image_tag("icons/solid/trash.svg") ,advancement_path(advancement),method: :delete,class: "hover-link"%>
     <% end %>
   </div>

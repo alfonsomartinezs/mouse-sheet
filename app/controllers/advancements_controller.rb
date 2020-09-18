@@ -27,7 +27,7 @@ class AdvancementsController < ApplicationController
     @advancement.passes += 1 
     advance_skill
     @advancement.save 
-    redirect_to character_path(@advancement.character)
+    # redirect_to character_path(@advancement.character)
   end
 
   def fail 
@@ -36,7 +36,6 @@ class AdvancementsController < ApplicationController
     @advancement.fails += 1 
     advance_skill
     @advancement.save 
-    redirect_to character_path(@advancement.character)
   end
 
   def destroy 

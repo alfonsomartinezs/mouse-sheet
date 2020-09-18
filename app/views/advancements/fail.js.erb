@@ -1,0 +1,3 @@
+$("#advancement-<%=@advancement.id %>").text(
+  "<%= @advancement.skill.name.titleize %> <%= @advancement.level%> (<%= @advancement.passes %> passes /<%= @advancement.fails%> fails)"
+);
