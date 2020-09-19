@@ -1,0 +1,24 @@
+<div class="character-card">
+          <%= link_to character_path(character) do%>
+                <div class="character-thumb">
+                <%= image_tag character.thumbnail if character.image.attached? %>
+                </div>
+                <div class="character-body">
+                
+                <h3 class="character-name"> <%= character.name %> of <%= character.city.name %> </h3>
+                <span class="character-details"> <%= character.rank.name%> </span>
+                
+                <% if character.belief.length > 0 %>
+                <p>
+                "<%= 
+                  if character.belief.length > 77 
+                    character.belief[0..60]+"..."
+                  else
+                    character.belief
+                  end
+                %>"
+                </p>
+              <% end %>
+            </div>
+          <%end %>    
+        </div>

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   
   root to: "application#home"
   
-  get "/home", to: "application#home"
-
+  get "/home",    to: "application#home"
+  get "/contact", to: "application#contact"
   resources :characters do
     put    :gain_fate
     patch  :gain_fate

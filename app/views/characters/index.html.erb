@@ -4,56 +4,18 @@
   <h3>Your Characters</h3>
   <div class="characters">  
     <% @user_characters.each do |character|%>
-        <div class="character">
-          <%= link_to character_path(character) do%>
-                <div class="character-thumb">
-                <%= image_tag character.thumbnail if character.image.attached? %>
-                </div>
-                <div class="character-text">
-                <h3> <%= character.name %> </h3>
-                <% if character.belief.length > 0 %>
-                <p>
-                "<%= 
-                  if character.belief.length > 77 
-                    character.belief[0..75]+"..."
-                  else
-                    character.belief
-                  end
-                %>"
-                </p>
-              <% end %>
-            </div>
-          <%end %>    
-        </div>
+      <%= render partial: "characters", locals: {character: character}%>
     <% end %>
   </div>
 <% end %>
-
-
+</section>
+<section class="characters-section container">
 <h3>Public Characters</h3>
+<p>
+</p>
 <div class="characters">
   <% @other_characters.each do |character|%>
-<div class="character">
-          <%= link_to character_path(character) do%>
-                <div class="character-thumb">
-                <%= image_tag character.thumbnail if character.image.attached? %>
-                </div>
-                <div class="character-text">
-                <h3> <%= character.name %> </h3>
-                <% if character.belief.length > 0 %>
-                <p>
-                "<%= 
-                  if character.belief.length > 77 
-                    character.belief[0..75]+"..."
-                  else
-                    character.belief
-                  end
-                %>"
-                </p>
-              <% end %>
-            </div>
-          <%end %>    
-        </div>
+    <%= render partial: "characters", locals: {character: character}%>
   <% end %>
 </div>
 
