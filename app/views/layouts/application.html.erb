@@ -25,23 +25,20 @@
           <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
         <% else %>
           <li><%= link_to('Login', new_user_session_path) %></li>
+          <li class="highlighted"><%= link_to "Sign Up", new_user_registration_path %><br /></li>
         <% end %>
-        <li><%= link_to "Sign Up", new_user_registration_path %><br /></li>
+        
       </ul>
       </nav>
     </div>
     </header>
-    
-      <%if flash.notice%>
-        <div class="container">
+  <%if flash.notice || flash.alert%>
+        <div class="container flash-container">
           <p class="flash notice"><%= flash.notice%></p>
-        </div>
-      <% end %>
-      <%if flash.alert%>
-        <div class="container">
           <p class="flash alert"><%= flash.alert%></p>
         </div>
       <% end %>
+      
     <main>
       <%= yield %>
     </main>
