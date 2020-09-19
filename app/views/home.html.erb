@@ -13,52 +13,44 @@
 </section>
 <section class="container">
   <div class="intro-text container">
-    <h2>An editable, shareable, character sheet</h2>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-      Dolorem adipisci, quidem consectetur velit quas fugiat aperiam et laudantium tenetur eveniet
-      corrupti natus pariatur dignissimos cumque placeat nostrum nesciunt architecto odio?
+    <h2 class="intro-title">An editable, shareable, character sheet</h2>
+    <p class="paragraph">
+      Use this tool to create a character for the Mouse Guard RPG and track your inventory,
+      traits, skills and other progress as you play with your friends. You can make your character public and viewable by everyone,
+      or form a group or characters that can only be seen by your friends.
     </p>
   </div>
   <div class="flex row">
-    <div class="col col-3">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="col-icon">
-        <path d="M15.2322 5.23223L18.7677 8.76777M16.7322 3.73223C17.7085 2.75592 19.2914 2.75592 20.2677 3.73223C21.244 4.70854 21.244 6.29146 20.2677 7.26777L6.5 21.0355H3V17.4644L16.7322 3.73223Z" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <div class="col col-2">
 
+      <h3 class="col-header">Create & Publish your Mouse</h3>
+      <p >
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi optio et qui perferendis similique sed aspernatur fugiat debitis excepturi voluptatem quibusdam, atque amet, a ad nihil corrupti nulla error facilis.
+      </p>
+      <%= link_to "Create your Mouse", new_character_path, :class => "button"%>
+    </div>
 
-      <h3 class="col-header">Track your Progress</h3>
+    <div class="col col-2">
+      <%= image_tag "08.png", :class=>"col-image"%>
+    </div>
+  </div>
+
+  <div class="flex row row-reverse">
+
+    <div class="col col-2">
+
+      <h3 class="col-header">Form your Guard Patrol</h3>
       <p>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         Error facere molestias quis at blanditiis dolorum possimus aliquam saepe,
         reprehenderit quaerat. Quia temporibus nulla numquam maxime illo modi tempora quae voluptates!
       </p>
+      <%= link_to "Create your Group", groups_path, :class => "button"%>
     </div>
-    <div class="col col-3">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="col-icon">
-      <path d="M8.68387 13.3419C8.88616 12.9381 9 12.4824 9 12C9 11.5176 8.88616 11.0619 8.68387 10.6581M8.68387 13.3419C8.19134 14.3251 7.17449 15 6 15C4.34315 15 3 13.6569 3 12C3 10.3431 4.34315 9 6 9C7.17449 9 8.19134 9.67492 8.68387 10.6581M8.68387 13.3419L15.3161 16.6581M8.68387 10.6581L15.3161 7.34193M15.3161 7.34193C15.8087 8.32508 16.8255 9 18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 6.48237 15.1138 6.93815 15.3161 7.34193ZM15.3161 16.6581C15.1138 17.0619 15 17.5176 15 18C15 19.6569 16.3431 21 18 21C19.6569 21 21 19.6569 21 18C21 16.3431 19.6569 15 18 15C16.8255 15 15.8087 15.6749 15.3161 16.6581Z" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
 
-      <h3 class="col-header">Share your Mouse</h3>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Molestiae nisi mollitia aliquam odio architecto. 
-        Ullam incidunt sunt repellendus neque iusto sit. 
-        Maxime ex mollitia dolorum vel. Blanditiis impedit quae alias.
-      </p>
-    </div>
-    <div class="col col-3">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="col-icon">
-      <path d="M17 20H22V18C22 16.3431 20.6569 15 19 15C18.0444 15 17.1931 15.4468 16.6438 16.1429M17 20H7M17 20V18C17 17.3438 16.8736 16.717 16.6438 16.1429M7 20H2V18C2 16.3431 3.34315 15 5 15C5.95561 15 6.80686 15.4468 7.35625 16.1429M7 20V18C7 17.3438 7.12642 16.717 7.35625 16.1429M7.35625 16.1429C8.0935 14.301 9.89482 13 12 13C14.1052 13 15.9065 14.301 16.6438 16.1429M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7ZM21 10C21 11.1046 20.1046 12 19 12C17.8954 12 17 11.1046 17 10C17 8.89543 17.8954 8 19 8C20.1046 8 21 8.89543 21 10ZM7 10C7 11.1046 6.10457 12 5 12C3.89543 12 3 11.1046 3 10C3 8.89543 3.89543 8 5 8C6.10457 8 7 8.89543 7 10Z" stroke="#4A5568" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-
-      <h3 class="col-header">Form your Patrol</h3>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        Sint iste facilis dignissimos perferendis. 
-        Quam necessitatibus magni, earum quasi accusantium mollitia, corrupti assumenda tenetur iusto, 
-        error dolore aperiam beatae! Esse, veritatis?
-        </p>
+    <div class="col col-2">
+      <%= image_tag "07.png", :class=>"col-image"%>
     </div>
   </div>
+
 </section>

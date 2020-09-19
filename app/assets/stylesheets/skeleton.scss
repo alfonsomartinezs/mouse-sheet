@@ -30,8 +30,9 @@
 
 :root {
   --black: #353022;
-  --blue: #7ea172;
-  --blue-selected: #789d6c;
+  --link: #4d8b31;
+  --alert: #ba3b46;
+  --notice: #769fb6;
   --white: #fcffeb;
   --true-white: #fefefe;
   --primary: #f3a712;
@@ -67,7 +68,7 @@ html {
 }
 body {
   min-height: 100%;
-  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  font-size: 1.7em;
   line-height: 1.6;
   font-weight: 400;
   font-family: "Quicksand", sans-serif;
@@ -149,10 +150,10 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 main a {
-  color: var(--blue);
+  color: var(--link);
 }
 main a:hover {
-  color: var(--blue-selected);
+  opacity: 0.7;
 }
 
 /* Buttons
@@ -486,6 +487,7 @@ header {
   top: 0;
   width: 100%;
   z-index: 1;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 header a {
@@ -632,12 +634,12 @@ header a {
 }
 
 .notice {
-  color: #419972;
+  color: var(--notice);
   transition: all 1s;
 }
 
 .alert {
-  color: #fb1f20;
+  color: var(--alert);
 }
 
 .skill,
@@ -804,12 +806,28 @@ h1 {
   margin-top: 0;
 }
 
+.intro-title {
+  color: var(--primary);
+}
+
 .intro-text {
   text-align: center;
 }
 
+.paragraph {
+  margin: 0 auto;
+  max-width: 50ch;
+}
+
 .row {
   text-align: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
 }
 
 .col {
@@ -817,13 +835,19 @@ h1 {
   border-radius: 10px;
 }
 .col-header {
-  // color: var(--primary);
+  color: var(--primary);
 }
 .col + .col {
-  margin-left: auto;
+  // margin-left: auto;
 }
 .col-icon path {
   stroke: var(--primary);
+}
+
+.col-image {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
 }
 /* Media Queries
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -893,6 +917,15 @@ there.
     display: flex;
   }
 
+  .row {
+    justify-content: space-between;
+  }
+
+  .col-2 {
+    width: 45%;
+    text-align: left;
+  }
+
   .col-3 {
     width: 30%;
   }
@@ -904,6 +937,14 @@ there.
 
   .hero-body {
     grid-template-columns: 55% 1fr;
+  }
+
+  .hero::before {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.7) 45%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
   }
 
   .hero-title {
