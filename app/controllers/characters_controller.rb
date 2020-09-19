@@ -94,14 +94,14 @@ class CharactersController < ApplicationController
     puts @character.name
     @character.fate += 1
     @character.save
-    redirect_to character_path(@character)
+    # redirect_to character_path(@character)
   end
 
   def lose_fate
     @character = Character.find(params[:character_id])
     @character.fate -= 1
     @character.save
-    redirect_to character_path(@character)
+    # redirect_to character_path(@character)
   end
 
   def gain_persona
@@ -109,14 +109,14 @@ class CharactersController < ApplicationController
     puts @character.name
     @character.persona += 1
     @character.save
-    redirect_to character_path(@character)
+    # redirect_to character_path(@character)
   end
 
   def lose_persona
     @character = Character.find(params[:character_id])
     @character.persona -= 1
     @character.save
-    redirect_to character_path(@character)
+    # redirect_to character_path(@character)
   end
 
 

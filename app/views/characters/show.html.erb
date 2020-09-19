@@ -132,17 +132,17 @@
   <li><strong>Resources:</strong> <%= @character.resources %></li>
   <li><strong>Circles:</strong> <%= @character.circles %></li>
   <li>
-    <strong>Fate:</strong> <%= @character.fate%>
+    <strong>Fate:</strong> <span id="fate"><%= @character.fate%></span>
     <% if current_user and current_user.id == @character.user_id %>
-      <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_fate_path(@character), method: :put, class: "button button-increment" %>
-      <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_fate_path(@character), method: :put, class: "button button-increment" %>
+      <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_fate_path(@character), method: :put, remote:true, class: "button button-increment" %>
+      <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_fate_path(@character), method: :put, remote:true, class: "button button-increment" %>
     <% end %>
   </li>
   <li>
-    <strong>Persona:</strong> <%= @character.persona%>
+    <strong>Persona:</strong> <span id="persona"><%= @character.persona%></span>
     <% if current_user and current_user.id == @character.user_id %>
-    <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_persona_path(@character), method: :put, class: "button button-increment" %>
-    <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_persona_path(@character), method: :put, class: "button button-increment" %>
+    <%= link_to image_tag("icons/solid/plus-sm.svg"), character_gain_persona_path(@character), method: :put, remote:true, class: "button button-increment" %>
+    <%= link_to image_tag("icons/solid/minus-sm.svg"), character_lose_persona_path(@character), method: :put, remote:true, class: "button button-increment" %>
     <% end %>
   </li>
 </ul>
