@@ -1,7 +1,9 @@
-<section class="container">
-<h2>Sign up</h2>
+<section class="container login-container">
+<div class="center">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<h2>Sign up</h2>
+</div>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :class => "login-form") do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">

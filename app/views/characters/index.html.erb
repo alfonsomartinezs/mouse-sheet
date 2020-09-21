@@ -2,6 +2,7 @@
 <section class="characters-section container">
 <% if @user %>
   <h3>Your Characters</h3>
+  <%= link_to "Create a Guard", new_character_path, :class=> "button button-primary" %>
   <div class="characters">  
     <% @user_characters.each do |character|%>
       <%= render partial: "characters", locals: {character: character}%>

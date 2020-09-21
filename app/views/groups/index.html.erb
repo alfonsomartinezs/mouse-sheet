@@ -10,7 +10,7 @@
   <button class="button" id="show-group-modal" type="button">New Group</button>
   <div class="form-modal minimized" id='group-form-modal'>
   <%= form_with model: @group, :class=>"group-form" do |form|%>
-    <%= form.label :name%>
+    <%= form.label :name, "Group Name"%>
     <%= form.text_field :name%><br/>
     <%= form.submit :class=>"button button-primary"%><button class="button" id="hide-group-modal" type="button">Back</button>
   <% end %>
