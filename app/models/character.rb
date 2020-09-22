@@ -34,11 +34,11 @@ class Character < ApplicationRecord
       image.attach(
         io: File.open(
           Rails.root.join(
-            'app','assets','images','default_image.jpg'
+            'app','assets','images','default_image.png'
           )
         ),
-        filename: 'default_image.jpg',
-        content_type: 'image/jpg'
+        filename: 'default_image.png',
+        content_type: 'image/png'
       )
     end
   end

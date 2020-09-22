@@ -548,7 +548,7 @@ header a {
   text-transform: uppercase;
   height: 100%;
   display: inline-block;
-  padding: 0.7em;
+  padding: 0.5em;
 }
 
 .nav-list a:hover {
@@ -797,6 +797,10 @@ h1 {
   color: grey;
 }
 
+.group-list{
+  list-style: none;
+}
+
 .tooltip {
   position: relative;
 }
@@ -908,7 +912,7 @@ there.
   header {
     display: flex;
     align-items: center;
-    padding: 0.3em;
+    padding: 0.0em;
   }
 
   .header-container {

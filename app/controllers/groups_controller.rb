@@ -51,4 +51,5 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+
 end

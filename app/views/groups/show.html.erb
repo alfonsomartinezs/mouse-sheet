@@ -5,7 +5,6 @@
   <% else %>
     <%= link_to "Leave Group", user_membership_path(@current_membership), method: :delete%>
   <% end %>
-  <p>Created by <%= @group.creator.email %></p>
   <p>
     Members: <%= @memberships.map{|m| m.member.email}.join(",")%>
   </p>
