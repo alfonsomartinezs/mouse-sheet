@@ -468,7 +468,7 @@ Group.destroy_all
 User.destroy_all
 
 demo_users = [
-  {email:"demo1@mail.com",password:"password",password_confirmation:"password"},
+  {email:"demo@mail.com",password:"password",password_confirmation:"password"},
   {email:"demo2@mail.com",password:"password",password_confirmation:"password"},
   {email:"demo3@mail.com",password:"password",password_confirmation:"password"},
 ]
