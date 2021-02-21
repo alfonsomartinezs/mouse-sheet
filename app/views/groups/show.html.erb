@@ -16,29 +16,7 @@
 
   <div class="characters">
     <% @characters.each do |character|%>
-      <div class="character">
-          <%= link_to character_path(character) do%>
-                <div class="character-thumb">
-                <%= image_tag character.thumbnail if character.image.attached? %>
-                </div>
-                <div class="character-text">
-                <h3> <%= character.name %> </h3>
-                <% if character.belief.length > 0 %>
-                <p>
-                "<%= 
-                  if character.belief.length > 77 
-                    character.belief[0..75]+"..."
-                  else
-                    character.belief
-                  end
-                %>"
-                </p>
-              <% end %>
-            </div>
-          <%end %>    
-          <% membership_id = CharacterMembership.where("character_id = #{character.id} AND group_id = #{@group.id}").first.id%>
-          <%= link_to "remove", character_membership_path(membership_id), :class => "button button-small character-remover", method: :delete%>
-        </div>
+      <%= render partial: "characters/characters %>
     <% end %>
 
   </div>
