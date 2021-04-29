@@ -1,24 +1,5 @@
-# README
+# Gwendolyn | Mouseguard Character Tracking App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application to make playing and running the Mouseguard RPG a bit easier. You can create a mouse following the basic character creation steps outlined in the rules, then use the character sheet to track your inventory, skill progress, wises, etc.
 
-Things you may want to cover:
-
-* Ruby version (ruby 2.6.6)
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can make your character public so that others can see it, or create a group and share your character with only those in the group.
