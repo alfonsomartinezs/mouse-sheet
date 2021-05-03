@@ -19,11 +19,11 @@ require("jquery")
 
 
 function FlashFade(){
-  notices = document.getElementsByClassName("notice");
+  notices = document.getElementsByClassName("flash-container");
   for (let notice of notices){
     notice.classList.add("hidden");
+    console.log("fading");
   }
-  console.log("fadin'");
 }
 
 setTimeout(FlashFade,2000);
