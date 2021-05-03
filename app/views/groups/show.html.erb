@@ -16,7 +16,7 @@
 
   <div class="characters">
     <% @characters.each do |character|%>
-      <%= render partial: "characters/characters" %>
+      <%= render partial: "characters/characters", locals: {character: character} %>
     <% end %>
 
   </div>
